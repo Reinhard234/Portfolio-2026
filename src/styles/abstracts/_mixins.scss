@@ -1,0 +1,8 @@
+// _mixins.scss
+@mixin font-size($level) {
+  @if map-has-key($font-sizes, $level) {
+    font-size: map-get($font-sizes, $level);
+  } @else {
+    @warn "Unknown `#{$level}` in $font-sizes.";
+  }
+}

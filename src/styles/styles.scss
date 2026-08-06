@@ -1,0 +1,37 @@
+@import "abstracts/variables";
+@import "abstracts/mixins";
+@import "base/typography";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins so layouts touch the screen edge */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Prevent viewport zooming anomalies on mobile orientation changes */
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Ensure full height and smooth scrolling behaviors */
+html,
+body {
+  height: 100%;
+}

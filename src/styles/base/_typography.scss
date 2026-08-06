@@ -1,0 +1,12 @@
+body {
+  font-family: $font-family-primary;
+  font-size: map-get($font-sizes, "base");
+}
+
+.text-primary {
+  font-family: $font-family-primary;
+}
+
+.text-secondary {
+  font-family: $font-family-secondary;
+}
