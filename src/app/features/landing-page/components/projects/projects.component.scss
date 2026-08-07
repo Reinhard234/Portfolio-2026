@@ -1,28 +1,23 @@
 @import "styles/styles";
 
 .section-container {
-  height: 100dvh;
+  @include flex-layout(column, center, center);
+  min-height: 100vh;
   background-color: $bg-light;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
   overflow: hidden;
-  // background: rgba($bg-light, 0.4);
 
   .blob-layer {
-    width: 70%;
+    width: 50%;
     height: 100%;
     position: absolute;
     top: 0%;
     left: 50%;
     transform: translate(-50%, -100%);
 
-    // Outer wrapper: handles scroll parallax only
     .blob {
-      width: 150px;
-      height: 150px;
-      // filter: blur(15px);
+      width: $hero-icon-size;
+      height: $hero-icon-size;
       border-radius: $corner-fully-rounded;
       background-color: $bg-purple;
       opacity: 0.3;
@@ -30,99 +25,83 @@
       transform: translateY(var(--scroll-offset, 0px));
       will-change: transform;
       transition-duration: 0.2s;
+      background-color: rgba($bg-purple, 0.3);
     }
 
-    // Spread the icons around the hero
     .blob-gaming {
-      top: 12%;
-      left: 12%;
-      background-color: rgb(228, 225, 225);
+      top: 18%;
+      left: 25%;
+      background-color: rgba(228, 225, 225, 0.5);
     }
 
     .blob-sushi {
       top: 18%;
-      right: 12%;
-      background-color: rgb(255, 171, 145);
+      right: 25%;
+      background-color: rgba(255, 171, 145, 0.5);
     }
 
     .blob-pom {
       bottom: 15%;
-      left: 20%;
-      background-color: rgb(255, 207, 145);
+      left: 25%;
+      background-color: rgba(255, 207, 145, 0.5);
     }
 
     .blob-popcorn {
-      bottom: 10%;
-      right: 10%;
-      background-color: rgb(255, 145, 160);
+      bottom: 15%;
+      right: 25%;
+      background-color: rgba(255, 145, 160, 0.5);
     }
 
     .blob-music {
       top: 45%;
-      left: 4%;
-      background-color: rgb(145, 165, 255);
+      left: 5%;
+      background-color: rgba(145, 165, 255, 0.5);
     }
 
     .blob-jogging {
-      top: 50%;
+      top: 45%;
       right: 5%;
-      background-color: rgb(145, 255, 191);
+      background-color: rgba(145, 255, 191, 0.5);
     }
   }
 
   .projects-container {
+    @include flex-layout(column, null, center);
+    @include layout-spacing(gap, "6xl");
     color: $text-primary-light;
     position: relative;
     z-index: 1;
     text-align: left;
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-lg;
+    width: 100%;
     height: 100%;
-    padding-top: 200px;
+    padding: 200px 0px;
     background-color: rgba($bg-light, 0.1);
     backdrop-filter: blur(20px);
 
-    .section-header-container {
-      color: $text-primary-dark;
+    .projects {
+      @include flex-layout(column);
+      gap: 100px;
+      width: 40%;
+      min-width: 600px;
+      .section-header-container {
+        color: $text-primary-dark;
 
-      .heading {
-        // font-family: "Plus Jakarta Sans", sans-serif;
-        // font-size: 1.3rem;
-        @include font-size("2xl");
-        display: flex;
-        gap: $spacing-sm;
-        color: $text-secondary-dark;
-        align-items: center;
+        .heading {
+          @include font-size("2xl");
+          @include layout-spacing(gap, "sm");
+          @include flex-layout(row, null, center);
+          color: $text-secondary-dark;
 
-        .year-range-text {
-          color: $text-primary-dark;
-          @include font-size("base");
+          .year-range-text {
+            @include font-size("base");
+            color: $text-primary-dark;
+          }
+        }
+
+        .title {
+          @include font-size("5xl");
         }
       }
-
-      .title {
-        @include font-size("5xl");
-      }
     }
-  }
-}
-
-@keyframes floatBounce {
-  0%,
-  100% {
-    transform: translateY(0);
-    filter: blur(6px);
-  }
-  25% {
-    transform: translateY(-14px);
-  }
-  50% {
-    transform: translateY(0);
-    filter: blur(0px);
-  }
-  75% {
-    transform: translateY(10px);
   }
 }

@@ -1,0 +1,22 @@
+<div class="project-info-container">
+  <div class="title-container">
+    <div class="text-primary title">{{ project().title }}</div>
+    <div class="text-primary client-year-container">
+      <div class="client">
+        {{ project().client }}
+      </div>
+      <div class="divider"></div>
+      <div class="year">
+        {{ project().year }}
+      </div>
+    </div>
+  </div>
+  <div class="text-primary description">{{ project().description }}</div>
+  <div class="project-image-container">
+    <img
+      class="project-image"
+      src="/assets/images/projects/{{ project().image }}.png"
+      alt=""
+    />
+  </div>
+</div>

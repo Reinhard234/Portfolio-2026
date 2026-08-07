@@ -1,20 +1,25 @@
 <div class="section-container">
-  <div class="blob-layer" #iconLayer>
-    <div class="blob blob-gaming" data-speed="0.7"></div>
+  <div class="blob-layer" #blobLayer>
+    <div class="blob blob-gaming" data-speed="0.9"></div>
     <div class="blob blob-sushi" data-speed="0.75"></div>
     <div class="blob blob-pom" data-speed="0.45"></div>
     <div class="blob blob-popcorn" data-speed="0.4"></div>
     <div class="blob blob-music" data-speed="0.5"></div>
-    <div class="blob blob-jogging" data-speed="0.5"></div>
+    <div class="blob blob-jogging" data-speed="0.6"></div>
   </div>
 
   <div class="projects-container">
-    <div class="section-header-container">
-      <div class="text-primary heading">
-        Selected work
-        <div class="year-range-text">2023 - 2026</div>
+    <div class="projects">
+      <div class="section-header-container">
+        <div class="text-primary heading">
+          Selected work
+          <div class="year-range-text">2023 - 2026</div>
+        </div>
+        <div class="text-secondary title">A few things I’ve built</div>
       </div>
-      <div class="text-secondary title">A few things I’ve built</div>
+      @for (project of projects(); track project.id) {
+        <app-project-info [project]="project" />
+      }
     </div>
   </div>
 </div>

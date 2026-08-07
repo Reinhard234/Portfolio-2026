@@ -6,3 +6,23 @@
     @warn "Unknown `#{$level}` in $font-sizes.";
   }
 }
+
+@mixin layout-spacing($property, $level) {
+  @if map-has-key($spacing, $level) {
+    #{$property}: map-get($spacing, $level);
+  } @else {
+    @warn "Unknown `#{$level}` in $spacing.";
+  }
+}
+
+@mixin flex-layout($direction: row, $justify: null, $align: null) {
+  display: flex;
+  flex-direction: $direction;
+
+  @if $justify {
+    justify-content: $justify;
+  }
+  @if $align {
+    align-items: $align;
+  }
+}

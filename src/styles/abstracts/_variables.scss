@@ -1,14 +1,16 @@
 // Colours
 $forest-green: #0b1411;
-$cream: #f0e9db;
+$cream: #f6f4f6;
 $lilac: #9b91ff;
 $lilac-dark: #5d52c3;
+$grey: #767470;
 
 // Text colour-variables
 $text-primary-light: $cream;
 $text-primary-dark: $forest-green;
 $text-secondary-light: $lilac;
 $text-secondary-dark: $lilac-dark;
+$text-muted-light: $grey;
 
 // background colours
 $bg-dark: $forest-green;
@@ -23,39 +25,44 @@ $number-16: 16px;
 $number-20: 20px;
 $number-24: 24px;
 $number-28: 28px;
+$number-35: 35px;
 $number-50: 50px;
+$number-100: 100px;
+$number-150: 150px;
 
-$spacing-xxs: $number-4;
-$spacing-xs: $number-8;
-$spacing-sm: $number-12;
-$spacing-md: $number-16;
-$spacing-lg: $number-20;
-$spacing-xl: $number-24;
+$spacing: (
+  "2xs": $number-4,
+  "xs": $number-8,
+  "sm": $number-12,
+  "md": $number-16,
+  "lg": $number-20,
+  "xl": $number-24,
+  "3xl": $number-28,
+  "4xl": $number-35,
+  "5xl": $number-50,
+  "6xl": $number-100,
+);
 
 $corner-semi-rounded: $number-4;
 $corner-rounded: $number-8;
 $corner-fully-rounded: $number-50;
 
+$hero-icon-size: $number-150;
+
 // fonts
 $font-sizes: (
   "xs": 0.75rem,
-  // 12px
   "sm": 0.875rem,
-  // 14px
   "base": 1rem,
-  // 16px
   "lg": 1.125rem,
-  // 18px
   "xl": 1.25rem,
-  // 20px
   "2xl": 1.5rem,
-  // 24px
   "3xl": 1.875rem,
-  // 30px
   "4xl": 2.25rem,
-  // 36px
   "5xl": 3rem,
 );
 
 $font-family-primary: "Plus Jakarta Sans", sans-serif;
 $font-family-secondary: "Libre Baskerville", serif;
+
+$default-box-shadow: 0 $number-20 $number-24 (-$number-4) rgba($bg-dark, 0.1);

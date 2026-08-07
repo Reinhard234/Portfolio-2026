@@ -1,46 +1,65 @@
 @import "styles/styles";
 
 .hero-container {
+  @include flex-layout(column, center, center);
   background-color: $bg-dark;
   height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
   overflow: hidden;
 
   .icon-layer {
-    width: 70%;
+    width: 50%;
     height: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 2;
 
     .icon {
       position: absolute;
       transform: translateY(var(--scroll-offset, 0px));
       will-change: transform;
-      transition-duration: 0.2s;
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease,
+        filter 0.2s ease;
 
       img {
         display: block;
-        height: 150px;
+        height: $hero-icon-size;
         width: fit-content;
-        opacity: 0.85;
-        filter: blur(0px);
-        animation: floatBounce 7s ease-in-out infinite;
+        filter: blur(1px) brightness(0.6);
+        // animation: floatBounce 7s ease-in-out infinite;
         animation-fill-mode: backwards;
+
+        transition:
+          opacity 0.2s ease,
+          filter 0.2s ease;
       }
-      &:hover {
-        filter: blur(0px);
-        transform: scale(1.2);
+    }
+
+    &:has(.icon:hover) {
+      .icon {
+        img {
+          filter: blur(6px) brightness(0.6);
+          transform: translateY(0);
+          // animation-play-state: paused;
+        }
+      }
+
+      .icon:hover {
+        img {
+          opacity: 1;
+          filter: blur(0px);
+        }
       }
     }
 
     .icon-gaming {
-      top: 12%;
-      left: 12%;
+      top: 18%;
+      left: 25%;
+
       img {
         animation-delay: 0s;
       }
@@ -48,7 +67,8 @@
 
     .icon-sushi {
       top: 18%;
-      right: 12%;
+      right: 25%;
+
       img {
         animation-delay: 1s;
       }
@@ -56,15 +76,17 @@
 
     .icon-pom {
       bottom: 15%;
-      left: 20%;
+      left: 25%;
+
       img {
         animation-delay: 2s;
       }
     }
 
     .icon-popcorn {
-      bottom: 10%;
-      right: 10%;
+      bottom: 15%;
+      right: 25%;
+
       img {
         animation-delay: 3s;
       }
@@ -72,15 +94,17 @@
 
     .icon-music {
       top: 45%;
-      left: 4%;
+      left: 5%;
+
       img {
         animation-delay: 4s;
       }
     }
 
     .icon-jogging {
-      top: 50%;
+      top: 45%;
       right: 5%;
+
       img {
         animation-delay: 5s;
       }
@@ -88,14 +112,13 @@
   }
 
   .text-container {
+    @include layout-spacing(gap, "lg");
+    @include flex-layout(column);
     color: $bg-light;
     position: relative;
     z-index: 1;
     text-align: center;
     width: 20%;
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-lg;
 
     .name {
       @include font-size("2xl");
@@ -105,7 +128,7 @@
       @include font-size("4xl");
 
       .role {
-        padding: $spacing-xxs;
+        @include layout-spacing(padding, "2xs");
         color: $text-secondary-light;
         border-radius: $corner-rounded;
         background-color: rgba($bg-purple, 0.15);
@@ -114,10 +137,10 @@
   }
 
   .scroll-text {
-    display: flex;
-    gap: $spacing-md;
-    color: $text-primary-light;
     @include font-size("base");
+    @include layout-spacing(gap, "md");
+    @include flex-layout;
+    color: $text-primary-light;
     position: absolute;
     bottom: 5%;
     left: 50%;
@@ -133,20 +156,16 @@
   0%,
   100% {
     transform: translateY(0);
-    opacity: 0.7;
-    filter: blur(6px);
+    filter: blur(3px);
   }
   25% {
     transform: translateY(-14px);
-    opacity: 0.85;
   }
   50% {
     transform: translateY(0);
-    opacity: 0.85;
     filter: blur(0px);
   }
   75% {
     transform: translateY(10px);
-    opacity: 0.7;
   }
 }
