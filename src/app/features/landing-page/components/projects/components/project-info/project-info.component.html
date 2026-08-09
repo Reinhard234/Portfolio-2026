@@ -11,12 +11,37 @@
       </div>
     </div>
   </div>
-  <div class="text-primary description">{{ project().description }}</div>
-  <div class="project-image-container">
+
+  <div class="text-primary skills">
+    @for (skill of project().skills; track skill; let i = $index) {
+      <div class="skill" [appScrollReveal]="i * 200">{{ skill }}</div>
+    }
+  </div>
+
+  <div class="text-primary description" [appScrollReveal]="300">
+    {{ project().description }}
+  </div>
+  <div
+    class="project-image-container"
+    (mouseenter)="onImageHover(true, $event)"
+    (mouseleave)="onImageHover(false, $event)"
+    (mousemove)="onCursorMove($event)"
+    (click)="onImageClick()"
+  >
     <img
       class="project-image"
       src="/assets/images/projects/{{ project().image }}.png"
       alt=""
+      [appScrollReveal]="400"
     />
+
+    <div
+      class="view-cursor text-primary"
+      [class.is-visible]="isHoveringImage()"
+      [style.--cursor-x.px]="cursorX"
+      [style.--cursor-y.px]="cursorY"
+    >
+      View
+    </div>
   </div>
 </div>

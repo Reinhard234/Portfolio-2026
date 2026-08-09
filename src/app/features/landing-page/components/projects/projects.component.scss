@@ -9,7 +9,7 @@
 
   .blob-layer {
     width: 50%;
-    height: 100%;
+    height: 100vh;
     position: absolute;
     top: 0%;
     left: 50%;
@@ -18,50 +18,47 @@
     .blob {
       width: $hero-icon-size;
       height: $hero-icon-size;
-      border-radius: $corner-fully-rounded;
+      padding: 100px;
+      border-radius: 100%;
       background-color: $bg-purple;
       opacity: 0.3;
       position: absolute;
       transform: translateY(var(--scroll-offset, 0px));
       will-change: transform;
-      transition-duration: 0.2s;
-      background-color: rgba($bg-purple, 0.3);
+      background: linear-gradient(
+        rgba($light-green, 0.2),
+        rgba($bg-purple, 0.2)
+      );
     }
 
     .blob-gaming {
       top: 18%;
       left: 25%;
-      background-color: rgba(228, 225, 225, 0.5);
     }
 
     .blob-sushi {
       top: 18%;
       right: 25%;
-      background-color: rgba(255, 171, 145, 0.5);
     }
 
     .blob-pom {
       bottom: 15%;
       left: 25%;
-      background-color: rgba(255, 207, 145, 0.5);
     }
 
     .blob-popcorn {
       bottom: 15%;
       right: 25%;
-      background-color: rgba(255, 145, 160, 0.5);
     }
 
     .blob-music {
       top: 45%;
       left: 5%;
-      background-color: rgba(145, 165, 255, 0.5);
     }
 
     .blob-jogging {
       top: 45%;
       right: 5%;
-      background-color: rgba(145, 255, 191, 0.5);
     }
   }
 
@@ -76,7 +73,7 @@
     height: 100%;
     padding: 200px 0px;
     background-color: rgba($bg-light, 0.1);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(15px);
 
     .projects {
       @include flex-layout(column);
@@ -84,13 +81,17 @@
       width: 40%;
       min-width: 600px;
       .section-header-container {
+        @include layout-spacing(padding, "3xl");
+        @include layout-spacing(gap, "md");
+        @include flex-layout(column);
         color: $text-primary-dark;
 
         .heading {
-          @include font-size("2xl");
+          @include font-size("5xl");
           @include layout-spacing(gap, "sm");
-          @include flex-layout(row, null, center);
+          @include flex-layout(row, null, flex-end);
           color: $text-secondary-dark;
+          font-weight: 500;
 
           .year-range-text {
             @include font-size("base");
@@ -99,7 +100,7 @@
         }
 
         .title {
-          @include font-size("5xl");
+          @include font-size("xl");
         }
       }
     }

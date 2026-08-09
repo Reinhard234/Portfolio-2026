@@ -1,15 +1,29 @@
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { ScrollRevealDirective } from '../../../../directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, ScrollRevealDirective],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
 })
 export class HeroComponent {
   @ViewChild('iconLayer') iconLayer!: ElementRef<HTMLElement>;
   private ticking = false;
+  hoverCaption: string = '';
+  hoverCaptionChars: string[] = [];
+
+  setCaption(caption: string) {
+    this.hoverCaption = caption;
+    this.hoverCaptionChars = caption.split('');
+  }
+
+  clearCaption() {
+    this.hoverCaption = '';
+    this.hoverCaptionChars = [];
+  }
 
   @HostListener('window:scroll') onScroll() {
     if (this.ticking) return;

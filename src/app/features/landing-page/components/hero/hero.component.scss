@@ -8,6 +8,7 @@
   overflow: hidden;
 
   .icon-layer {
+    @include flex-layout(column, center, center);
     width: 50%;
     height: 100%;
     position: absolute;
@@ -16,41 +17,104 @@
     transform: translate(-50%, -50%);
     z-index: 2;
 
+    .text-container {
+      @include layout-spacing(gap, "4xl");
+      @include flex-layout(column);
+      color: $bg-light;
+      z-index: 1;
+      text-align: center;
+      width: 50%;
+      position: absolute;
+      transform: translateY(var(--scroll-offset, 0px));
+
+      .hover-caption {
+        opacity: 0;
+        transform: translateY(-8px);
+        transition:
+          opacity 0.5s ease-in-out,
+          transform 0.5s ease-in-out;
+        height: 1.2em;
+        white-space: nowrap;
+
+        .hover-caption-char {
+          display: inline-block;
+          opacity: 0;
+          animation-fill-mode: forwards;
+        }
+      }
+
+      .hover-caption.visible {
+        opacity: 1;
+        transform: translateY(0);
+
+        .hover-caption-char {
+          animation-name: letter-glow-in;
+          animation-duration: 0.5s;
+          animation-timing-function: ease-out;
+        }
+      }
+
+      .name,
+      .description {
+        transform: translateY(16px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+
+      .name {
+        @include font-size("2xl");
+        transition-delay: 0.1s;
+      }
+
+      .description {
+        @include font-size("4xl");
+        transition-delay: 0.25s;
+
+        .role {
+          @include layout-spacing(padding, "2xs");
+          color: $text-secondary-light;
+          border-radius: $corner-rounded;
+          background-color: rgba($bg-purple, 0.15);
+        }
+      }
+    }
+
     .icon {
       position: absolute;
       transform: translateY(var(--scroll-offset, 0px));
       will-change: transform;
       transition:
-        transform 0.2s ease,
-        opacity 0.2s ease,
-        filter 0.2s ease;
+        opacity 0.5s ease,
+        filter 0.5s ease;
 
       img {
         display: block;
         height: $hero-icon-size;
         width: fit-content;
         filter: blur(1px) brightness(0.6);
-        // animation: floatBounce 7s ease-in-out infinite;
         animation-fill-mode: backwards;
 
         transition:
-          opacity 0.2s ease,
-          filter 0.2s ease;
+          opacity 0.5s ease,
+          filter 0.5s ease;
       }
     }
 
     &:has(.icon:hover) {
       .icon {
+        transition: filter 0.5s ease;
         img {
-          filter: blur(6px) brightness(0.6);
+          filter: blur(10px) brightness(0.5);
           transform: translateY(0);
-          // animation-play-state: paused;
         }
       }
 
       .icon:hover {
+        transition: filter 0.5s ease;
         img {
           opacity: 1;
+          animation: RotateLeftRight 1.5s steps(1) infinite;
           filter: blur(0px);
         }
       }
@@ -59,6 +123,8 @@
     .icon-gaming {
       top: 18%;
       left: 25%;
+      z-index: 2;
+      transition-delay: 0.05s;
 
       img {
         animation-delay: 0s;
@@ -68,6 +134,7 @@
     .icon-sushi {
       top: 18%;
       right: 25%;
+      transition-delay: 0.15s;
 
       img {
         animation-delay: 1s;
@@ -77,6 +144,7 @@
     .icon-pom {
       bottom: 15%;
       left: 25%;
+      transition-delay: 0.2s;
 
       img {
         animation-delay: 2s;
@@ -86,6 +154,7 @@
     .icon-popcorn {
       bottom: 15%;
       right: 25%;
+      transition-delay: 0.3s;
 
       img {
         animation-delay: 3s;
@@ -95,6 +164,7 @@
     .icon-music {
       top: 45%;
       left: 5%;
+      transition-delay: 0.35s;
 
       img {
         animation-delay: 4s;
@@ -104,34 +174,10 @@
     .icon-jogging {
       top: 45%;
       right: 5%;
+      transition-delay: 0.4s;
 
       img {
         animation-delay: 5s;
-      }
-    }
-  }
-
-  .text-container {
-    @include layout-spacing(gap, "lg");
-    @include flex-layout(column);
-    color: $bg-light;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    width: 20%;
-
-    .name {
-      @include font-size("2xl");
-    }
-
-    .description {
-      @include font-size("4xl");
-
-      .role {
-        @include layout-spacing(padding, "2xs");
-        color: $text-secondary-light;
-        border-radius: $corner-rounded;
-        background-color: rgba($bg-purple, 0.15);
       }
     }
   }
@@ -145,6 +191,11 @@
     bottom: 5%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+    transition-delay: 0.6s;
+
     .arrow {
       animation: floatBounce 4s linear infinite;
       animation-fill-mode: backwards;
@@ -167,5 +218,44 @@
   }
   75% {
     transform: translateY(10px);
+  }
+}
+
+@keyframes RotateLeftRight {
+  0% {
+    transform: rotate(0deg);
+    animation-timing-function: steps(1);
+  }
+  25% {
+    transform: rotate(20deg);
+    animation-timing-function: steps(1);
+  }
+  50% {
+    transform: rotate(0deg);
+    animation-timing-function: steps(1);
+  }
+  75% {
+    transform: rotate(-20deg);
+    animation-timing-function: steps(1);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes letter-glow-in {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+    text-shadow: 0 0 0 rgba($bg-purple, 0);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 8px rgba($bg-purple, 0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    text-shadow: 0 0 0 rgba($bg-purple, 0);
   }
 }

@@ -1,0 +1,148 @@
+@import "styles/styles";
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(black, 0.8);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  @include flex-layout(row, center, center);
+
+  .modal-panel {
+    @include layout-spacing(padding, "xl");
+    @include layout-spacing(gap, "lg");
+    @include flex-layout(column);
+    position: relative;
+    width: 70%;
+    max-width: 1000px;
+    height: 95vh;
+    overflow-y: auto;
+    background: $bg-dark;
+    border-radius: $corner-rounded;
+    color: $text-primary-light;
+  }
+
+  .close-container {
+    width: 100%;
+    @include flex-layout(row, flex-end, center);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    .modal-close {
+      @include layout-spacing(padding, "sm");
+      @include font-size("sm");
+      border-radius: $corner-fully-rounded;
+      color: $text-primary-dark;
+      background-color: $bg-light;
+      border: none;
+      cursor: pointer;
+      z-index: 1;
+    }
+  }
+
+  .modal-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: $corner-rounded;
+  }
+
+  .content-container {
+    @include flex-layout(row);
+    @include layout-spacing(gap, "3xl");
+    align-items: flex-start;
+
+    .modal-sidebar {
+      @include flex-layout(column);
+      @include layout-spacing(gap, "md");
+      width: 30%;
+      min-width: 220px;
+      position: sticky;
+      top: 0;
+
+      .project-title {
+        @include font-size("2xl");
+        font-weight: 500;
+      }
+
+      .modal-meta {
+        @include font-size("sm");
+        color: $text-secondary-light;
+      }
+
+      .meta-block {
+        @include flex-layout(column);
+        @include layout-spacing(gap, "2xs");
+
+        .meta-label {
+          @include font-size("xs");
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: $text-secondary-light;
+        }
+
+        .meta-value {
+          @include font-size("base");
+        }
+      }
+
+      .skill-chips {
+        @include flex-layout(row);
+        @include layout-spacing(gap, "2xs");
+        flex-wrap: wrap;
+
+        .skill-chip {
+          @include layout-spacing(padding, "2xs");
+          @include font-size("xs");
+          border-radius: $corner-rounded;
+          background-color: rgba($bg-purple, 0.15);
+          color: $text-secondary-light;
+        }
+      }
+    }
+
+    .modal-narrative {
+      @include flex-layout(column);
+      @include layout-spacing(gap, "xl");
+      width: 70%;
+
+      .narrative-lede {
+        @include font-size("lg");
+        color: $text-secondary-light;
+      }
+
+      .narrative-section {
+        @include flex-layout(column);
+        @include layout-spacing(gap, "xs");
+
+        h3 {
+          @include font-size("sm");
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: $text-secondary-light;
+          margin: 0;
+        }
+
+        p {
+          @include font-size("base");
+          line-height: 1.6;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  // stack sidebar on top on smaller modal widths
+  @media (max-width: 800px) {
+    .content-container {
+      flex-direction: column;
+
+      .modal-sidebar,
+      .modal-narrative {
+        width: 100%;
+        position: static;
+      }
+    }
+  }
+}

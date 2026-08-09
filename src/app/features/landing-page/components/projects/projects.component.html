@@ -10,15 +10,18 @@
 
   <div class="projects-container">
     <div class="projects">
-      <div class="section-header-container">
+      <div class="section-header-container" [appScrollReveal]="0">
         <div class="text-primary heading">
           Selected work
           <div class="year-range-text">2023 - 2026</div>
         </div>
-        <div class="text-secondary title">A few things I’ve built</div>
+        <div class="text-secondary title">
+          From Fintech to Govtech, here are a few of the products I've helped
+          bring to life
+        </div>
       </div>
-      @for (project of projects(); track project.id) {
-        <app-project-info [project]="project" />
+      @for (project of projects; track project.id; let i = $index) {
+        <app-project-info [project]="project" [appScrollReveal]="i * 100" />
       }
     </div>
   </div>

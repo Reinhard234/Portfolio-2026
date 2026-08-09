@@ -36,6 +36,22 @@
     }
   }
 
+  .skills {
+    @include flex-layout;
+    @include layout-spacing(gap, "sm");
+
+    .skill {
+      @include flex-layout;
+      @include layout-spacing(padding-top, "xs");
+      @include layout-spacing(padding-bottom, "xs");
+      @include layout-spacing(padding-left, "sm");
+      @include layout-spacing(padding-right, "sm");
+      background-color: rgba($bg-purple, 0.2);
+      border-radius: $corner-fully-rounded;
+      color: $text-secondary-dark;
+    }
+  }
+
   .description {
     @include font-size("lg");
   }
@@ -43,16 +59,39 @@
   .project-image-container {
     @include flex-layout;
     transition-duration: 0.5s;
-    cursor: pointer;
+    cursor: none;
     position: relative;
     overflow: hidden;
     border-radius: $corner-rounded;
 
     .project-image {
       width: 100%;
+    }
 
-      &:hover {
-        transform: scale(1.1);
+    .view-cursor {
+      @include flex-layout(column, center, center);
+      @include layout-spacing(width, "6xl");
+      @include layout-spacing(height, "6xl");
+      @include font-size("sm");
+      position: absolute;
+      pointer-events: none;
+      z-index: 10;
+      border-radius: $corner-fully-rounded;
+      background: rgba($bg-dark, 0.45);
+      backdrop-filter: blur(10px);
+      color: $text-primary-light;
+      text-transform: uppercase;
+      transform: translate(
+        calc(var(--cursor-x) - 50%),
+        calc(var(--cursor-y) - 50%)
+      );
+      opacity: 0;
+      scale: 0.8;
+      will-change: transform, opacity;
+
+      &.is-visible {
+        opacity: 1;
+        scale: 1;
       }
     }
     &::before {

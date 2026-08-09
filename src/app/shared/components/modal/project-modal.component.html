@@ -1,0 +1,102 @@
+@if (modalService.activeProject(); as project) {
+  <div class="modal-backdrop" (click)="onBackdropClick($event)">
+    <div
+      class="modal-panel"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="project.title"
+    >
+      <div class="close-container">
+        <div
+          class="text-primary modal-close"
+          (click)="modalService.close()"
+          aria-label="Close"
+        >
+          Close &times;
+        </div>
+      </div>
+
+      <img
+        class="modal-image"
+        src="/assets/images/projects/{{ project.image }}.png"
+        alt=""
+        [appScrollReveal]="0"
+      />
+
+      <div class="content-container">
+        <aside class="modal-sidebar" [appScrollReveal]="200">
+          <div class="text-primary project-title">{{ project.title }}</div>
+          <p class="modal-meta">{{ project.client }} · {{ project.year }}</p>
+
+          <div class="meta-block">
+            <span class="meta-label">Industry</span>
+            <span class="meta-value">{{ project.caseStudy.industry }}</span>
+          </div>
+
+          @if (project.caseStudy.role) {
+            <div class="meta-block">
+              <span class="meta-label">Role</span>
+              <span class="meta-value">{{ project.caseStudy.role }}</span>
+            </div>
+          }
+
+          <div class="meta-block">
+            <span class="meta-label">Stack</span>
+            <div class="skill-chips">
+              @for (skill of project.skills; track skill) {
+                <span class="skill-chip">{{ skill }}</span>
+              }
+            </div>
+          </div>
+        </aside>
+
+        <div class="modal-narrative" [appScrollReveal]="400">
+          <p class="narrative-lede">{{ project.description }}</p>
+
+          <section class="narrative-section">
+            <h3>Overview</h3>
+            <p>{{ project.caseStudy.overview }}</p>
+          </section>
+
+          @if (project.caseStudy.context) {
+            <section class="narrative-section">
+              <h3>Context</h3>
+              <p>{{ project.caseStudy.context }}</p>
+            </section>
+          }
+
+          <section class="narrative-section">
+            <h3>The problem</h3>
+            <p>{{ project.caseStudy.problem }}</p>
+          </section>
+
+          <section class="narrative-section">
+            <h3>My contribution</h3>
+            <p>{{ project.caseStudy.contribution }}</p>
+          </section>
+
+          @if (project.caseStudy.decisions) {
+            <section class="narrative-section">
+              <h3>Key decisions</h3>
+              <p>{{ project.caseStudy.decisions }}</p>
+            </section>
+          }
+
+          @if (project.caseStudy.quality) {
+            <section class="narrative-section">
+              <h3>Quality & testing</h3>
+              <p>{{ project.caseStudy.quality }}</p>
+            </section>
+          }
+
+          @if (project.caseStudy.outcome) {
+            <section class="narrative-section">
+              <h3>Outcome</h3>
+              <p>{{ project.caseStudy.outcome }}</p>
+            </section>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}
