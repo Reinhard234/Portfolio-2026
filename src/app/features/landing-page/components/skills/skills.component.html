@@ -1,0 +1,48 @@
+<div class="section-container">
+  <div class="skills-container">
+    <div class="section-header-container" [appScrollReveal]="400">
+      <div class="text-primary heading">I've got your back</div>
+      <div class="text-secondary title">
+        A full-stack skillset shaped by both design and development
+      </div>
+    </div>
+
+    <div class="skill-stack">
+      @for (category of skillCategories; track category.label) {
+        @for (skill of category.skills; track skill.name; let i = $index) {
+          @if (skill.icon != null) {
+            <div
+              class="skill-card"
+              [style.--i]="i"
+              (mouseenter)="setActiveCategory(skill.name)"
+            >
+              <img
+                [src]="'/assets/images/skills/' + skill.icon + '.png'"
+                [alt]="skill.name"
+                [appScrollReveal]="i * 100"
+              />
+            </div>
+          }
+        }
+      }
+    </div>
+
+    <div class="skill-categories">
+      @for (category of skillCategories; track category.label; let i = $index) {
+        <div class="skill-category">
+          <div class="category-label">{{ category.label }}</div>
+          @for (skill of category.skills; track skill.name) {
+            <div
+              class="category-skill {{
+                _activeCategory == skill.name ? 'active-category' : ''
+              }}"
+              [appScrollReveal]="i * 100"
+            >
+              {{ skill.name }}
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>

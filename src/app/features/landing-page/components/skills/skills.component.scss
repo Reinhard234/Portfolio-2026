@@ -1,0 +1,103 @@
+@import "styles/styles";
+.section-container {
+  @include flex-layout(column, center, center);
+  min-height: 100vh;
+  background-color: $bg-light;
+  position: relative;
+  overflow: hidden;
+  .skills-container {
+    @include flex-layout(column, center, center);
+    @include layout-spacing(padding, "7xl");
+    background-color: $bg-light;
+
+    .section-header-container {
+      @include layout-spacing(padding, "3xl");
+      @include layout-spacing(gap, "md");
+      @include flex-layout(column);
+      color: $text-primary-dark;
+
+      .heading {
+        @include font-size("5xl");
+        @include layout-spacing(gap, "sm");
+        @include flex-layout(row, null, flex-end);
+        color: $text-secondary-dark;
+        font-weight: 500;
+      }
+
+      .title {
+        @include font-size("xl");
+      }
+    }
+
+    .skill-stack {
+      @include flex-layout(row, center, center);
+      @include layout-spacing(gap, "md");
+      width: 30%;
+      padding: 60px 0;
+      flex-wrap: wrap;
+
+      .skill-card {
+        @include flex-layout(row, center, center);
+        @include layout-spacing(width, "6xl");
+        @include layout-spacing(height, "6xl");
+        border-radius: $corner-rounded;
+        background: $bg-light;
+        box-shadow: $skill-card-box-shadow;
+        transform: rotate(calc(var(--i) * 4deg - 12deg)); // fan out tilt
+        transition:
+          transform 0.3s ease,
+          z-index 0s;
+        z-index: var(--i);
+
+        &:hover {
+          transform: rotate(0deg) translateY(-10px) scale(1.1);
+          z-index: 99;
+          border: 2px solid $border-purple-light;
+          background-color: rgba($bg-purple, 0.15);
+          backdrop-filter: blur(10px);
+        }
+
+        img {
+          @include layout-spacing(width, "5xl");
+          @include layout-spacing(height, "5xl");
+          object-fit: contain;
+        }
+      }
+    }
+
+    .skill-categories {
+      @include flex-layout(row);
+      @include layout-spacing(gap, "3xl");
+      flex-wrap: wrap;
+
+      .skill-category {
+        @include flex-layout(column);
+        @include layout-spacing(gap, "xs");
+        min-width: 180px;
+
+        .category-label {
+          @include font-size("sm");
+          @include layout-spacing(padding, "xs");
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: $text-secondary-dark;
+          margin-bottom: 8px;
+        }
+
+        .category-skill {
+          @include font-size("base");
+          @include layout-spacing(padding, "xs");
+          color: $text-primary-dark;
+          border-bottom: 1px dashed rgba($text-primary-dark, 0.15);
+          transition-duration: 0.2s;
+
+          &.active-category {
+            color: $text-secondary-dark;
+            background-color: rgba($bg-purple, 0.1);
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}

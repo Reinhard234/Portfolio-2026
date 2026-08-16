@@ -1,0 +1,85 @@
+@import "styles/styles";
+
+.experience-container {
+  @include flex-layout(column);
+  @include layout-spacing(gap, "4xl");
+  @include layout-spacing(padding, "7xl");
+  background-color: $bg-dark;
+  color: $text-primary-light;
+
+  .timeline {
+    @include flex-layout(column);
+    width: 40%;
+    min-width: 600px;
+    position: relative;
+
+    .timeline-entry {
+      @include flex-layout(row);
+      @include layout-spacing(gap, "xl");
+
+      .timeline-marker {
+        @include flex-layout(column, flex-start, center);
+        width: 20px;
+        flex-shrink: 0;
+
+        .timeline-dot {
+          width: 14px;
+          height: 14px;
+          border-radius: $corner-fully-rounded;
+          background-color: $bg-purple;
+          margin-top: 6px;
+          flex-shrink: 0;
+        }
+
+        .timeline-line {
+          width: 2px;
+          flex-grow: 1;
+          background-color: rgba($bg-purple, 0.15);
+        }
+      }
+
+      &:last-child .timeline-line {
+        display: none;
+      }
+
+      .timeline-content {
+        @include flex-layout(column);
+        @include layout-spacing(gap, "sm");
+        padding-bottom: 60px;
+        flex: 1;
+
+        .entry-header {
+          @include flex-layout(row, space-between, baseline);
+
+          .role {
+            @include font-size("xl");
+            font-weight: 500;
+          }
+
+          .entry-period {
+            @include font-size("sm");
+            color: $text-secondary-dark;
+          }
+        }
+
+        .entry-company {
+          @include font-size("base");
+          color: $text-secondary-dark;
+        }
+
+        .entry-points {
+          @include flex-layout(column);
+          @include layout-spacing(gap, "xs");
+          padding-left: 20px;
+          margin: 8px 0 0 0;
+
+          li {
+            @include font-size("base");
+            line-height: 1.6;
+            color: $text-primary-light;
+          }
+        }
+      }
+    }
+  }
+}

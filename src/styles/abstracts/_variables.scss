@@ -18,6 +18,9 @@ $bg-dark: $forest-green;
 $bg-light: $cream;
 $bg-purple: $lilac;
 
+// border colours
+$border-purple-light: $lilac;
+
 // Spacing
 $number-4: 4px;
 $number-8: 8px;
@@ -30,6 +33,7 @@ $number-35: 35px;
 $number-50: 50px;
 $number-100: 100px;
 $number-150: 150px;
+$number-200: 200px;
 
 $spacing: (
   "2xs": $number-4,
@@ -42,6 +46,7 @@ $spacing: (
   "4xl": $number-35,
   "5xl": $number-50,
   "6xl": $number-100,
+  "7xl": $number-200,
 );
 
 $corner-semi-rounded: $number-4;
@@ -67,3 +72,4 @@ $font-family-primary: "Plus Jakarta Sans", sans-serif;
 $font-family-secondary: "Libre Baskerville", serif;
 
 $default-box-shadow: 0 $number-20 $number-24 (-$number-4) rgba($bg-dark, 0.1);
+$skill-card-box-shadow: 0 $number-8 $number-20 rgba($bg-dark, 0.15);
