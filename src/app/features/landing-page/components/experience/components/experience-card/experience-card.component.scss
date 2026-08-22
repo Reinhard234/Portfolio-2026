@@ -1,0 +1,14 @@
+@import "styles/styles";
+
+.experience-card-container {
+  @include layout-spacing(gap, "md");
+  @include flex-layout(row);
+  @include font-size("md");
+  color: $text-primary-light;
+  height: 100%;
+  font-weight: 300;
+
+  .arrow {
+    color: $text-secondary-light;
+  }
+}

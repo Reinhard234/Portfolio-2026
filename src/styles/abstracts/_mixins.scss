@@ -26,3 +26,29 @@
     align-items: $align;
   }
 }
+
+@mixin grid-layout(
+  $columns: null,
+  $rows: null,
+  $gap: null,
+  $justify: null,
+  $align: null
+) {
+  display: grid;
+
+  @if $columns {
+    grid-template-columns: $columns;
+  }
+  @if $rows {
+    grid-template-rows: $rows;
+  }
+  @if $gap {
+    gap: $gap;
+  }
+  @if $justify {
+    justify-items: $justify;
+  }
+  @if $align {
+    align-items: $align;
+  }
+}

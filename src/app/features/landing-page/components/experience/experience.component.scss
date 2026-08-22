@@ -1,82 +1,99 @@
 @import "styles/styles";
 
-.experience-container {
-  @include flex-layout(column);
-  @include layout-spacing(gap, "4xl");
-  @include layout-spacing(padding, "7xl");
+.section-container {
+  @include flex-layout(column, center, center);
+  min-height: 100vh;
   background-color: $bg-dark;
-  color: $text-primary-light;
-
-  .timeline {
+  position: relative;
+  overflow: hidden;
+  .experience-container {
     @include flex-layout(column);
-    width: 40%;
-    min-width: 600px;
-    position: relative;
+    @include layout-spacing(gap, "4xl");
+    @include layout-spacing(padding, "7xl");
+    width: 50%;
+    color: $text-primary-light;
 
-    .timeline-entry {
-      @include flex-layout(row);
-      @include layout-spacing(gap, "xl");
+    .section-header-container {
+      @include layout-spacing(padding, "3xl");
+      @include layout-spacing(gap, "md");
+      @include flex-layout(column);
+      color: $text-primary-light;
 
-      .timeline-marker {
-        @include flex-layout(column, flex-start, center);
-        width: 20px;
-        flex-shrink: 0;
-
-        .timeline-dot {
-          width: 14px;
-          height: 14px;
-          border-radius: $corner-fully-rounded;
-          background-color: $bg-purple;
-          margin-top: 6px;
-          flex-shrink: 0;
-        }
-
-        .timeline-line {
-          width: 2px;
-          flex-grow: 1;
-          background-color: rgba($bg-purple, 0.15);
-        }
-      }
-
-      &:last-child .timeline-line {
-        display: none;
-      }
-
-      .timeline-content {
-        @include flex-layout(column);
+      .heading {
+        @include font-size("5xl");
         @include layout-spacing(gap, "sm");
-        padding-bottom: 60px;
-        flex: 1;
+        @include flex-layout(row, null, flex-end);
+        color: $text-secondary-dark;
+        font-weight: 500;
+      }
 
-        .entry-header {
-          @include flex-layout(row, space-between, baseline);
+      .title {
+        @include font-size("xl");
+      }
+    }
 
-          .role {
-            @include font-size("xl");
-            font-weight: 500;
+    .timeline {
+      @include flex-layout(column);
+      min-width: 600px;
+      position: relative;
+
+      .timeline-entry {
+        @include flex-layout(row);
+        @include layout-spacing(gap, "xl");
+
+        .timeline-marker {
+          @include flex-layout(column, flex-start, center);
+          width: 20px;
+          flex-shrink: 0;
+
+          .timeline-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: $corner-fully-rounded;
+            background-color: $bg-purple;
+            margin-top: 6px;
+            flex-shrink: 0;
           }
 
-          .entry-period {
-            @include font-size("sm");
-            color: $text-secondary-dark;
+          .timeline-line {
+            width: 2px;
+            flex-grow: 1;
+            background-color: rgba($bg-purple, 0.15);
           }
         }
 
-        .entry-company {
-          @include font-size("base");
-          color: $text-secondary-dark;
+        &:last-child .timeline-line {
+          display: none;
         }
 
-        .entry-points {
+        .timeline-content {
           @include flex-layout(column);
-          @include layout-spacing(gap, "xs");
-          padding-left: 20px;
-          margin: 8px 0 0 0;
+          @include layout-spacing(gap, "sm");
+          @include layout-spacing(padding-bottom, "5xl");
+          flex: 1;
 
-          li {
+          .entry-header {
+            @include flex-layout(row, space-between, baseline);
+
+            .role {
+              @include font-size("xl");
+              font-weight: 500;
+            }
+
+            .entry-period {
+              @include font-size("sm");
+              color: $text-secondary-light;
+            }
+          }
+
+          .entry-company {
             @include font-size("base");
-            line-height: 1.6;
-            color: $text-primary-light;
+            color: $text-secondary-light;
+          }
+
+          .entry-points {
+            @include grid-layout($rows: repeat(3, 1fr));
+            @include layout-spacing(gap, "md");
           }
         }
       }

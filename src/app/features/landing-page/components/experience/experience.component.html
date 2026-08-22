@@ -1,33 +1,38 @@
-<div class="experience-container">
-  <div class="section-header-container">
-    <div class="text-primary heading">Experience</div>
-    <div class="text-secondary title">
-      A few roles that shaped how I think about design and development
-    </div>
-  </div>
-
-  <div class="timeline">
-    @for (entry of experience; track entry.company; let i = $index) {
-      <div class="timeline-entry" [appScrollReveal]="i * 100">
-        <div class="timeline-marker">
-          <div class="timeline-dot"></div>
-          <div class="timeline-line"></div>
-        </div>
-
-        <div class="timeline-content">
-          <div class="entry-header">
-            <div class="text-primary role">{{ entry.role }}</div>
-            <div class="entry-period">{{ entry.period }}</div>
-          </div>
-          <div class="entry-company">{{ entry.company }}</div>
-
-          <ul class="entry-points">
-            @for (point of entry.points; track point) {
-              <li>{{ point }}</li>
-            }
-          </ul>
-        </div>
+<div class="section-container">
+  <div class="experience-container">
+    <div class="section-header-container">
+      <div class="text-primary heading">Experience</div>
+      <div class="text-secondary title">
+        A few roles that shaped how I think about design and development
       </div>
-    }
+    </div>
+
+    <div class="timeline">
+      @for (entry of experience; track entry.company; let i = $index) {
+        <div class="timeline-entry" [appScrollReveal]="i * 100">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+          </div>
+
+          <div class="timeline-content">
+            <div class="entry-header">
+              <div class="text-primary role">{{ entry.role }}</div>
+              <div class="entry-period">{{ entry.period }}</div>
+            </div>
+            <div class="entry-company">{{ entry.company }}</div>
+
+            <div class="entry-points">
+              @for (point of entry.points; track point; let i = $index) {
+                <app-experience-card
+                  [experience]="point"
+                  [appScrollReveal]="i * 150"
+                />
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
   </div>
 </div>
