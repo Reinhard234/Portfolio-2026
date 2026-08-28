@@ -1,0 +1,40 @@
+@import "styles/styles";
+
+.navbar-container {
+  @include layout-spacing(left, "md");
+  @include layout-spacing(margin-top, "md");
+  @include flex-layout(row, center, center);
+  @include layout-spacing(padding-inline, "xs");
+  @include font-size("sm");
+  border-radius: $corner-fully-rounded;
+  position: fixed;
+  top: 0;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  z-index: 999;
+  width: fit-content;
+  background-color: $bg-dark;
+  color: $text-primary-light;
+  transition-duration: 0.3s;
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .navbar-item {
+    @include layout-spacing(padding, "sm");
+    opacity: 0.5;
+
+    &.active {
+      opacity: 1;
+      font-weight: 600;
+    }
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+}

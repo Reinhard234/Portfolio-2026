@@ -11,4 +11,10 @@
   .arrow {
     color: $text-secondary-light;
   }
+
+  .text {
+    ::ng-deep strong {
+      font-weight: 700;
+    }
+  }
 }

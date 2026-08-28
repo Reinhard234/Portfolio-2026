@@ -1,0 +1,11 @@
+<div class="navbar-container" [class.hidden]="isHidden()">
+  @for (item of navItems; track item.id) {
+    <div
+      class="navbar-item"
+      [class.active]="activeSection() === item.id"
+      (click)="scrollTo(item.id)"
+    >
+      {{ item.label }}
+    </div>
+  }
+</div>
