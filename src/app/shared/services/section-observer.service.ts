@@ -1,11 +1,13 @@
 import { Injectable, signal } from '@angular/core';
 
 type Visibility = 'hidden' | 'visible';
+type Theme = 'light' | 'dark';
 
 @Injectable({ providedIn: 'root' })
 export class SectionObserverService {
   activeSection = signal<string>('hero');
   isHidden = signal<boolean>(true);
+  isDarkMode = signal<boolean>(true);
 
   private hideShowMap: Record<string, Visibility> = {
     hero: 'hidden',
@@ -14,26 +16,54 @@ export class SectionObserverService {
     experience: 'visible',
   };
 
-  private observer?: IntersectionObserver;
+  private lightDarkMap: Record<string, Theme> = {
+    hero: 'dark',
+    projects: 'light',
+    skills: 'light',
+    experience: 'dark',
+  };
+
+  private sectionIds: string[] = [];
+  private ticking = false;
+  private boundScrollListener = () => this.onScroll();
 
   observe(ids: string[]) {
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            this.activeSection.set(id);
-            this.isHidden.set(this.hideShowMap[id] === 'hidden');
-          }
-        }
-      },
-      { threshold: 0, rootMargin: '-50% 0px -50% 0px' },
-    );
-
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) this.observer!.observe(el);
+    this.sectionIds = ids;
+    window.addEventListener('scroll', this.boundScrollListener, {
+      passive: true,
     });
+    this.updateActiveSection(); // run once immediately for initial state
+  }
+
+  private onScroll() {
+    if (this.ticking) return;
+    this.ticking = true;
+    requestAnimationFrame(() => {
+      this.updateActiveSection();
+      this.ticking = false;
+    });
+  }
+
+  private updateActiveSection() {
+    const referenceLine = window.innerHeight * 0.05;
+    let currentId = this.sectionIds[0];
+
+    for (const id of this.sectionIds) {
+      const el = document.getElementById(id);
+      if (!el) continue;
+      const top = el.getBoundingClientRect().top;
+      if (top <= referenceLine) {
+        currentId = id;
+      } else {
+        break;
+      }
+    }
+
+    if (currentId !== this.activeSection()) {
+      this.activeSection.set(currentId);
+      this.isHidden.set(this.hideShowMap[currentId] === 'hidden');
+      this.isDarkMode.set(this.lightDarkMap[currentId] === 'dark');
+    }
   }
 
   scrollTo(id: string) {
@@ -43,6 +73,6 @@ export class SectionObserverService {
   }
 
   disconnect() {
-    this.observer?.disconnect();
+    window.removeEventListener('scroll', this.boundScrollListener);
   }
 }

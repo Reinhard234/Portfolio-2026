@@ -8,15 +8,23 @@
   @include font-size("sm");
   border-radius: $corner-fully-rounded;
   position: fixed;
-  top: 0;
   top: 0%;
   left: 50%;
   transform: translate(-50%, 0%);
-  z-index: 999;
+  z-index: 90;
   width: fit-content;
-  background-color: $bg-dark;
-  color: $text-primary-light;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba($bg-light, 0.6);
+  color: $text-primary-dark;
+  border: 1px solid rgba($border-light, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
   transition-duration: 0.3s;
+
+  &.darkmode {
+    background: rgba($bg-dark, 0.5);
+    color: $text-primary-light;
+  }
 
   &.hidden {
     opacity: 0;

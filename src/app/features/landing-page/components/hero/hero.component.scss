@@ -68,7 +68,7 @@
       }
 
       .description {
-        @include font-size("4xl");
+        @include font-size("3xl");
         transition-delay: 0.25s;
 
         .role {

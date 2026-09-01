@@ -12,6 +12,7 @@ export class NavbarComponent {
   private sections = inject(SectionObserverService);
   isHidden = this.sections.isHidden;
   activeSection = this.sections.activeSection;
+  isDarkmode = this.sections.isDarkMode;
   navItems = [
     { id: 'projects', label: 'Projects' },
     { id: 'skills', label: 'Skills' },

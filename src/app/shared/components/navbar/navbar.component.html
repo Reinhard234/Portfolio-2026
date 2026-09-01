@@ -1,4 +1,8 @@
-<div class="navbar-container" [class.hidden]="isHidden()">
+<div
+  class="navbar-container"
+  [class.hidden]="isHidden()"
+  [class.darkmode]="isDarkmode()"
+>
   @for (item of navItems; track item.id) {
     <div
       class="navbar-item"
