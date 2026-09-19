@@ -1,15 +1,33 @@
-<div
-  class="section-container"
-  (mousemove)="onMove($event)"
-  (mouseleave)="onLeave()"
->
-  <div class="about-me-section">
-    <div class="about-me-header text-secondary">A little bit about me</div>
+<div class="section-container">
+  <div class="icon-layer" #iconLayer>
+    <div class="icon icon-gaming" data-speed="0.9" [appScrollReveal]="800">
+      <img src="/assets/images/icons/gaming.png" alt="gaming" />
+    </div>
+    <div class="icon icon-sushi" data-speed="0.75" [appScrollReveal]="800">
+      <img src="/assets/images/icons/sushi.png" alt="sushi" />
+    </div>
+    <div class="icon icon-pom" data-speed="0.45" [appScrollReveal]="1600">
+      <img src="/assets/images/icons/pom.png" alt="pomeranian" />
+    </div>
+    <div class="icon icon-popcorn" data-speed="0.4" [appScrollReveal]="1600">
+      <img src="/assets/images/icons/popcorn.png" alt="popcorn" />
+    </div>
+    <div class="icon icon-music" data-speed="0.5" [appScrollReveal]="1200">
+      <img src="/assets/images/icons/music.png" alt="music" />
+    </div>
+    <div class="icon icon-jogging" data-speed="0.6" [appScrollReveal]="1200">
+      <img src="/assets/images/icons/jogging.png" alt="jogging" />
+    </div>
+  </div>
 
+  <div class="about-me-section" appParallax="up">
     <div class="about-content">
       <div class="about-text">
-        <p class="bio">{{ bio }}</p>
-        <p class="tagline">{{ tagline }}</p>
+        <div class="about-me-header text-secondary">A little bit about me</div>
+        <div>
+          <p class="bio">{{ bio }}</p>
+          <p class="tagline">{{ tagline }}</p>
+        </div>
       </div>
 
       <div class="stats-grid">
@@ -22,12 +40,4 @@
       </div>
     </div>
   </div>
-
-  <img
-    #face
-    class="cursor-face"
-    src="/assets/images/general/reinhard-colour.JPG"
-    alt=""
-    aria-hidden="true"
-  />
 </div>

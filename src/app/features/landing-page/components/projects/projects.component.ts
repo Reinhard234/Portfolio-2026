@@ -18,26 +18,5 @@ import { ParallaxDirective } from '../../../../directives/parallax.directive';
   styleUrl: './projects.component.scss',
 })
 export class ProjectsComponent {
-  @ViewChild('blobLayer') blobLayer!: ElementRef<HTMLElement>;
-  private ticking = false;
-
   projects = PROJECTS;
-
-  @HostListener('window:scroll') onScroll() {
-    if (this.ticking) return;
-    this.ticking = true;
-
-    requestAnimationFrame(() => {
-      const scrollY = window.scrollY;
-      const blobs =
-        this.blobLayer.nativeElement.querySelectorAll<HTMLElement>('.blob');
-
-      blobs.forEach((blob) => {
-        const speed = parseFloat(blob.dataset['speed'] ?? '0.2');
-        blob.style.setProperty('--scroll-offset', `${scrollY * speed}px`);
-      });
-
-      this.ticking = false;
-    });
-  }
 }

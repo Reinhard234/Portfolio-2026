@@ -9,46 +9,123 @@
   color: $text-primary-light;
   padding: 2rem;
   box-sizing: border-box;
-  @media (hover: hover) and (pointer: fine) {
-    cursor: none;
+}
 
-    .cursor-face {
+.icon-layer {
+  @include flex-layout(column, center, center);
+  width: 60%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  .icon {
+    position: absolute;
+    transform: translateY(var(--scroll-offset, 0px));
+    will-change: transform;
+    transition:
+      opacity 0.5s ease,
+      filter 0.5s ease;
+
+    img {
       display: block;
-    }
+      height: $hero-icon-size;
+      width: fit-content;
+      filter: blur(1px) brightness(0.6);
+      animation-fill-mode: backwards;
 
-    &:hover .cursor-face {
-      opacity: 1;
+      transition:
+        opacity 0.5s ease,
+        filter 0.5s ease;
     }
   }
-}
-.cursor-face {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100px;
-  border-radius: $corner-semi-rounded;
-  object-fit: cover;
-  pointer-events: none; // essential, otherwise the image blocks hover on the content
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  z-index: 10;
-  will-change: transform;
 
-  transform: translate(
-    calc(var(--cursor-x) - 50%),
-    calc(var(--cursor-y) - 50%)
-  );
+  &:has(.icon:hover) {
+    .icon {
+      transition: filter 0.5s ease;
+      img {
+        filter: blur(10px) brightness(0.5);
+        transform: translateY(0);
+      }
+    }
+
+    .icon:hover {
+      transition: filter 0.5s ease;
+      img {
+        opacity: 1;
+        animation: RotateLeftRight 1.5s steps(1) infinite;
+        filter: blur(0px);
+      }
+    }
+  }
+
+  .icon-gaming {
+    top: 18%;
+    left: 25%;
+    z-index: 2;
+    transition-delay: 0.05s;
+
+    img {
+      animation-delay: 0s;
+    }
+  }
+
+  .icon-sushi {
+    top: 18%;
+    right: 25%;
+    transition-delay: 0.15s;
+
+    img {
+      animation-delay: 1s;
+    }
+  }
+
+  .icon-pom {
+    bottom: 15%;
+    left: 25%;
+    transition-delay: 0.2s;
+
+    img {
+      animation-delay: 2s;
+    }
+  }
+
+  .icon-popcorn {
+    bottom: 15%;
+    right: 25%;
+    transition-delay: 0.3s;
+
+    img {
+      animation-delay: 3s;
+    }
+  }
+
+  .icon-music {
+    top: 45%;
+    left: 5%;
+    transition-delay: 0.35s;
+
+    img {
+      animation-delay: 4s;
+    }
+  }
+
+  .icon-jogging {
+    top: 45%;
+    right: 5%;
+    transition-delay: 0.4s;
+
+    img {
+      animation-delay: 5s;
+    }
+  }
 }
 
 .about-me-section {
-  max-width: 900px;
-  .about-me-header {
-    @include font-size("4xl");
-    font-weight: 500;
-    margin-bottom: 2rem;
-  }
+  max-width: 700px;
+  z-index: 20;
 
   .about-content {
     display: grid;
@@ -66,6 +143,10 @@
   .about-text {
     @include flex-layout(column);
     @include layout-spacing(gap, "sm");
+    .about-me-header {
+      @include font-size("4xl");
+      font-weight: 500;
+    }
     .bio {
       @include font-size("lg");
       line-height: 1.7;
@@ -84,7 +165,7 @@
   .stats-grid {
     @include layout-spacing(gap, "sm");
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .stat-card {
@@ -114,5 +195,27 @@
     @include font-size("base");
     color: rgba($text-primary-light, 0.6);
     margin-top: 0.25rem;
+  }
+}
+
+@keyframes RotateLeftRight {
+  0% {
+    transform: rotate(0deg);
+    animation-timing-function: steps(1);
+  }
+  25% {
+    transform: rotate(20deg);
+    animation-timing-function: steps(1);
+  }
+  50% {
+    transform: rotate(0deg);
+    animation-timing-function: steps(1);
+  }
+  75% {
+    transform: rotate(-20deg);
+    animation-timing-function: steps(1);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }

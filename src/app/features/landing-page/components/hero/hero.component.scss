@@ -7,178 +7,79 @@
   position: relative;
   overflow: hidden;
 
-  .icon-layer {
-    @include flex-layout(column, center, center);
-    width: 50%;
-    height: 100%;
+  @media (hover: hover) and (pointer: fine) {
+    cursor: none;
+
+    .cursor-face {
+      display: block;
+    }
+
+    &:hover .cursor-face {
+      opacity: 1;
+    }
+  }
+
+  .text-container {
+    @include layout-spacing(gap, "4xl");
+    @include flex-layout(column);
+    color: $text-primary-light;
+    z-index: 1;
+    text-align: center;
+    max-width: 700px;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
+    transform: translateY(var(--scroll-offset, 0px));
 
-    .text-container {
-      @include layout-spacing(gap, "4xl");
-      @include flex-layout(column);
-      color: $text-primary-light;
-      z-index: 1;
-      text-align: center;
-      width: 50%;
-      position: absolute;
-      transform: translateY(var(--scroll-offset, 0px));
-
-      .hover-caption {
-        opacity: 0;
-        transform: translateY(-8px);
-        transition:
-          opacity 0.5s ease-in-out,
-          transform 0.5s ease-in-out;
-        height: 1.2em;
-        white-space: nowrap;
-
-        .hover-caption-char {
-          display: inline-block;
-          opacity: 0;
-          animation-fill-mode: forwards;
-        }
-      }
-
-      .hover-caption.visible {
-        opacity: 1;
-        transform: translateY(0);
-
-        .hover-caption-char {
-          animation-name: letter-glow-in;
-          animation-duration: 0.5s;
-          animation-timing-function: ease-out;
-        }
-      }
-
-      .name,
-      .description {
-        transform: translateY(16px);
-        transition:
-          opacity 0.6s ease,
-          transform 0.6s ease;
-      }
-
-      .name {
-        @include font-size("2xl");
-        transition-delay: 0.1s;
-      }
-
-      .description {
-        @include font-size("3xl");
-        line-height: 1.6;
-        transition-delay: 0.25s;
-
-        .role {
-          @include layout-spacing(padding, "2xs");
-          color: $text-secondary-light;
-          border-radius: $corner-rounded;
-          background-color: rgba($bg-purple, 0.15);
-        }
-      }
-    }
-
-    .icon {
-      position: absolute;
-      transform: translateY(var(--scroll-offset, 0px));
-      will-change: transform;
+    .hover-caption {
+      opacity: 0;
+      transform: translateY(-8px);
       transition:
-        opacity 0.5s ease,
-        filter 0.5s ease;
+        opacity 0.5s ease-in-out,
+        transform 0.5s ease-in-out;
+      height: 1.2em;
+      white-space: nowrap;
 
-      img {
-        display: block;
-        height: $hero-icon-size;
-        width: fit-content;
-        filter: blur(1px) brightness(0.6);
-        animation-fill-mode: backwards;
-
-        transition:
-          opacity 0.5s ease,
-          filter 0.5s ease;
+      .hover-caption-char {
+        display: inline-block;
+        opacity: 0;
+        animation-fill-mode: forwards;
       }
     }
 
-    &:has(.icon:hover) {
-      .icon {
-        transition: filter 0.5s ease;
-        img {
-          filter: blur(10px) brightness(0.5);
-          transform: translateY(0);
-        }
-      }
+    .hover-caption.visible {
+      opacity: 1;
+      transform: translateY(0);
 
-      .icon:hover {
-        transition: filter 0.5s ease;
-        img {
-          opacity: 1;
-          animation: RotateLeftRight 1.5s steps(1) infinite;
-          filter: blur(0px);
-        }
+      .hover-caption-char {
+        animation-name: letter-glow-in;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-out;
       }
     }
 
-    .icon-gaming {
-      top: 18%;
-      left: 25%;
-      z-index: 2;
-      transition-delay: 0.05s;
-
-      img {
-        animation-delay: 0s;
-      }
+    .name,
+    .description {
+      transform: translateY(16px);
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
     }
 
-    .icon-sushi {
-      top: 18%;
-      right: 25%;
-      transition-delay: 0.15s;
-
-      img {
-        animation-delay: 1s;
-      }
+    .name {
+      @include font-size("2xl");
+      transition-delay: 0.1s;
     }
 
-    .icon-pom {
-      bottom: 15%;
-      left: 25%;
-      transition-delay: 0.2s;
+    .description {
+      @include font-size("3xl");
+      line-height: 1.6;
+      transition-delay: 0.25s;
 
-      img {
-        animation-delay: 2s;
-      }
-    }
-
-    .icon-popcorn {
-      bottom: 15%;
-      right: 25%;
-      transition-delay: 0.3s;
-
-      img {
-        animation-delay: 3s;
-      }
-    }
-
-    .icon-music {
-      top: 45%;
-      left: 5%;
-      transition-delay: 0.35s;
-
-      img {
-        animation-delay: 4s;
-      }
-    }
-
-    .icon-jogging {
-      top: 45%;
-      right: 5%;
-      transition-delay: 0.4s;
-
-      img {
-        animation-delay: 5s;
+      .role {
+        @include layout-spacing(padding, "xs");
+        font-weight: 600;
+        color: $text-secondary-light;
+        border-radius: $corner-rounded;
+        background-color: rgba($bg-purple, 0.15);
       }
     }
   }
@@ -204,6 +105,57 @@
   }
 }
 
+.cursor-face {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 190px;
+  height: 216px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+  will-change: transform;
+  transform: translate(
+    calc(var(--cursor-x) - 50%),
+    calc(var(--cursor-y) - 50%)
+  );
+
+  .polaroid {
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    padding: 10px 10px 36px; // thick bottom edge = polaroid look
+    background-color: $bg-light;
+    border-radius: $corner-semi-rounded;
+    box-shadow: $default-box-shadow;
+
+    z-index: calc(10 - var(--pos));
+    transform: translate(calc(var(--pos) * 8px), calc(var(--pos) * -6px))
+      rotate(var(--tilt));
+    transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1); // slight spring
+
+    &.flying-out {
+      transform: translate(115%, -8%) rotate(18deg);
+      transition: transform 0.3s ease-in;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .polaroid {
+      transition: none;
+    }
+  }
+}
+
 @keyframes floatBounce {
   0%,
   100% {
@@ -219,28 +171,6 @@
   }
   75% {
     transform: translateY(10px);
-  }
-}
-
-@keyframes RotateLeftRight {
-  0% {
-    transform: rotate(0deg);
-    animation-timing-function: steps(1);
-  }
-  25% {
-    transform: rotate(20deg);
-    animation-timing-function: steps(1);
-  }
-  50% {
-    transform: rotate(0deg);
-    animation-timing-function: steps(1);
-  }
-  75% {
-    transform: rotate(-20deg);
-    animation-timing-function: steps(1);
-  }
-  100% {
-    transform: rotate(0deg);
   }
 }
 

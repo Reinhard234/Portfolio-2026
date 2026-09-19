@@ -1,5 +1,5 @@
 <div class="section-container">
-  <div class="skills-container">
+  <div class="skills-container" appParallax="up">
     <div class="section-header-container" [appScrollReveal]="400">
       <div class="text-primary heading">I've got your back</div>
       <div class="text-secondary title">
@@ -7,7 +7,7 @@
       </div>
     </div>
 
-    <div class="skill-stack-container">
+    <div class="skill-stack-container" appParallax="down">
       <div class="skill-stack">
         @for (category of skillCategories; track category.label) {
           @for (skill of category.skills; track skill.name; let i = $index) {

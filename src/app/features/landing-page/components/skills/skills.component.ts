@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { SKILL_CATEGORIES } from '../../../../core/data/skills.data';
 import { ScrollRevealDirective } from '../../../../directives/scroll-reveal.directive';
+import { ParallaxDirective } from '../../../../directives/parallax.directive';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [ScrollRevealDirective],
+  imports: [ScrollRevealDirective, ParallaxDirective],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
 })

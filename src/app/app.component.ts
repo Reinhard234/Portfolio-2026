@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ProjectModalComponent } from './shared/components/modal/project-modal.component';
+import { SmoothScrollService } from './shared/services/smooth-scroll.service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,10 @@ import { ProjectModalComponent } from './shared/components/modal/project-modal.c
 })
 export class AppComponent {
   title = 'portfolio';
+
+  private readonly smoothScroll = inject(SmoothScrollService);
+
+  ngOnInit(): void {
+    this.smoothScroll.init();
+  }
 }
