@@ -7,24 +7,26 @@
       </div>
     </div>
 
-    <div class="skill-stack">
-      @for (category of skillCategories; track category.label) {
-        @for (skill of category.skills; track skill.name; let i = $index) {
-          @if (skill.icon != null) {
-            <div
-              class="skill-card"
-              [style.--i]="i"
-              (mouseenter)="setActiveCategory(skill.name)"
-            >
-              <img
-                [src]="'/assets/images/skills/' + skill.icon + '.png'"
-                [alt]="skill.name"
-                [appScrollReveal]="i * 100"
-              />
-            </div>
+    <div class="skill-stack-container">
+      <div class="skill-stack">
+        @for (category of skillCategories; track category.label) {
+          @for (skill of category.skills; track skill.name; let i = $index) {
+            @if (skill.icon != null) {
+              <div
+                class="skill-card"
+                [style.--i]="i"
+                (mouseenter)="setActiveCategory(skill.name)"
+              >
+                <img
+                  [src]="'/assets/images/skills/' + skill.icon + '.png'"
+                  [alt]="skill.name"
+                  [appScrollReveal]="i * 100"
+                />
+              </div>
+            }
           }
         }
-      }
+      </div>
     </div>
 
     <div class="skill-categories">

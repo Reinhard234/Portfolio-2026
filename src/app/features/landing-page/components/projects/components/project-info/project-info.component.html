@@ -1,26 +1,4 @@
 <div class="project-info-container">
-  <div class="title-container">
-    <div class="text-primary title">{{ project().title }}</div>
-    <div class="text-primary client-year-container">
-      <div class="client">
-        {{ project().client }}
-      </div>
-      <div class="divider"></div>
-      <div class="year">
-        {{ project().year }}
-      </div>
-    </div>
-  </div>
-
-  <div class="text-primary skills">
-    @for (skill of project().skills; track skill; let i = $index) {
-      <div class="skill" [appScrollReveal]="i * 200">{{ skill }}</div>
-    }
-  </div>
-
-  <div class="text-primary description" [appScrollReveal]="300">
-    {{ project().description }}
-  </div>
   <div
     class="project-image-container"
     (mouseenter)="onImageHover(true, $event)"

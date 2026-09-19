@@ -24,34 +24,13 @@
       />
 
       <div class="content-container">
-        <aside class="modal-sidebar" [appScrollReveal]="200">
-          <div class="text-primary project-title">{{ project.title }}</div>
-          <p class="modal-meta">{{ project.client }} · {{ project.year }}</p>
-
-          <div class="meta-block">
-            <span class="meta-label">Industry</span>
-            <span class="meta-value">{{ project.caseStudy.industry }}</span>
-          </div>
-
-          @if (project.caseStudy.role) {
-            <div class="meta-block">
-              <span class="meta-label">Role</span>
-              <span class="meta-value">{{ project.caseStudy.role }}</span>
-            </div>
-          }
-
-          <div class="meta-block">
-            <span class="meta-label">Stack</span>
-            <div class="skill-chips">
-              @for (skill of project.skills; track skill) {
-                <span class="skill-chip">{{ skill }}</span>
-              }
-            </div>
-          </div>
-        </aside>
-
         <div class="modal-narrative" [appScrollReveal]="400">
-          <p class="narrative-lede">{{ project.description }}</p>
+          <div class="title-container">
+            <div class="text-secondary project-title">{{ project.title }}</div>
+            <p class="project-description">{{ project.description }}</p>
+          </div>
+
+          <div class="divider"></div>
 
           <section class="narrative-section">
             <h3>Overview</h3>
@@ -96,6 +75,30 @@
             </section>
           }
         </div>
+        <aside class="modal-sidebar" [appScrollReveal]="200">
+          <p class="modal-meta">{{ project.client }} · {{ project.year }}</p>
+
+          <div class="meta-block">
+            <span class="meta-label">Industry</span>
+            <span class="meta-value">{{ project.caseStudy.industry }}</span>
+          </div>
+
+          @if (project.caseStudy.role) {
+            <div class="meta-block">
+              <span class="meta-label">Role</span>
+              <span class="meta-value">{{ project.caseStudy.role }}</span>
+            </div>
+          }
+
+          <div class="meta-block">
+            <span class="meta-label">Stack</span>
+            <div class="skill-chips">
+              @for (skill of project.skills; track skill) {
+                <span class="skill-chip">{{ skill }}</span>
+              }
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   </div>

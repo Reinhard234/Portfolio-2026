@@ -37,6 +37,7 @@ $number-150: 150px;
 $number-200: 200px;
 
 $spacing: (
+  "0": 0px,
   "2xs": $number-4,
   "xs": $number-8,
   "sm": $number-12,
@@ -74,3 +75,7 @@ $font-family-secondary: "Libre Baskerville", serif;
 
 $default-box-shadow: 0 $number-20 $number-24 (-$number-4) rgba($bg-dark, 0.1);
 $skill-card-box-shadow: 0 $number-8 $number-20 rgba($bg-dark, 0.15);
+
+// icons
+$icons-size-sm: $number-12;
+$icons-size-md: $number-16;

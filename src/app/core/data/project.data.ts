@@ -14,19 +14,19 @@ export const PROJECTS: Project[] = [
       industry: 'Govtech',
       role: ['UI/UX Designer', 'Frontend Developer', 'Backend Developer'],
       overview:
-        'A cross-platform mobile app that lets Western Cape residents report road defects (i.e., potholes, damaged guardrails) directly to the relevant municipal department, with photo evidence and status tracking.',
+        'A cross-platform app that lets Western Cape residents report road defects like potholes and damaged guardrails straight to the road infrastructure department, complete with photos and status tracking.',
       contribution:
-        'I led the design and frontend build for both sides of the platform — the citizen-facing reporting flow and the internal workflow foremen and supervisors use to action logged defects — while also contributing to the backend APIs powering both.',
+        'I handled the design and frontend on both sides of the spectrum. The citizen-facing app and the internal tool that foremen and supervisors use to action reports. I also jumped into the backend APIs when needed.',
       problem:
-        'Residents had no direct, trackable way to report road infrastructure issues. Reports went through disconnected channels with no visibility into whether anything was actioned.',
+        "Before this, residents didn't really have a proper way to report road issues. Everything went through scattered channels and nobody could tell if a reported defect actually led to anything.",
       outcome:
-        'Shipped to Android and iOS, giving 12,134 residents (as of March 2026) a direct channel to report infrastructure issues, with an admin portal that increases accountability of internal staff to action logged issues.',
+        "It's live on Android and iOS now, with 12,134 residents using it as of March 2026. The admin side also means internal staff can actually be held accountable for acting on what gets logged.",
       decisions:
-        'Chose a MAUI Blazor hybrid app so that we could interface with our blazor web portal.',
+        'Went with a MAUI Blazor hybrid app so it could share code with our existing Blazor web portal instead of building everything twice.',
       quality:
-        'Proper regression testing is done before every production release and the backend is tested using xUnit',
+        'Every production release goes through regression testing first, and the backend is covered by xUnit tests.',
       context:
-        'Working in a team with 3 - 5 developers with a production release at least every month',
+        'Small team, 3-5 devs, shipping to production at least once a month.',
     },
   },
   {
@@ -42,17 +42,17 @@ export const PROJECTS: Project[] = [
       industry: 'Fintech',
       role: ['UI/UX Designer', 'Frontend Developer', 'Backend Developer'],
       overview:
-        'A mobile-first web platform that lets PPS members take out short-term insurance on everyday items — phones, laptops, appliances — directly from their member portal, without going through a traditional broker process.',
+        'A mobile-first platform where PPS members can insure everyday items (i.e., phones, laptops etc) right from the portal, skipping the usual broker process.',
       problem:
-        'PPS members had no self-service way to insure everyday personal items. Getting cover meant going through slower, broker-mediated channels not designed for quick, low-value policies.',
+        "There wasn't a self-service option for members who just wanted a quick way to cover their items. It all had to go through brokers, which was slow and honestly overkill for something like insuring a laptop.",
       contribution:
-        'I designed the quoting and policy purchase flow with a mobile-first approach, since most members were expected to sign up on their phones, then built the Angular frontend and contributed to the backend services handling quoting and policy issuance.',
+        "I designed the entire end to end quoting flow with mobile in mind first, since that's how most members were actually using the portal, then built it out in Angular and helped with the backend quoting services.",
       outcome:
-        'Shipped as a fully self-service flow, reducing the time for a member to get covered from days (broker-dependent) to minutes.',
+        'What used to take days through a broker now takes minutes, entirely self-service.',
       decisions:
-        'Prioritized a mobile-first design system from the start, given early usage data showed most members were engaging with their PPS portal primarily on mobile.',
+        'Went mobile-first from day one to provide a quick and easy way to get cover.',
       context:
-        'Built as an extension to an existing PPS member portal, requiring the new flow to match established design patterns while introducing a simplified, faster UX for this specific product line.',
+        'This formed part of an existing ecosystem, so I had to work within their established patterns while still making this particular flow feel quicker and simpler than the rest.',
     },
   },
   {
@@ -68,17 +68,17 @@ export const PROJECTS: Project[] = [
       industry: 'Fintech',
       role: ['UI/UX Designer', 'Frontend Developer', 'Backend Developer'],
       overview:
-        'A web platform that gives PPS members visibility and control over their long-term insurance products — life cover, disability, and related policies — letting them view, update, and manage their plans without needing to contact PPS directly.',
+        'A platform giving PPS members visibility into their long-term policies (i.e., life cover, disability cover) so they can view and manage plans without having to call PPS every time.',
       problem:
-        'Members had limited visibility into their long-term policies and needed to contact PPS directly for basic changes or status checks, creating unnecessary friction and support load.',
+        'Members had very little insight into their own policies. Even small changes meant a phone call, which piled unnecessary load onto support.',
       contribution:
-        'I designed the member-facing dashboard and policy management flows, built the Angular frontend, and worked on the backend integrations that pulled live policy data into the portal.',
+        'I designed and implemented refined member dashboards and the redesigned their policy management flows, and worked on pulling live policy data in through backend integrations.',
       outcome:
-        'Gave members direct, real-time visibility into their policies, reducing reliance on support channels for routine account queries.',
+        'Members now have a real-time, holisitic view over their policies and other products, which took a real chunk out of routine support queries.',
       decisions:
-        'Used Capacitor to package the platform as a mobile app from the existing Angular codebase, avoiding a separate native build while still giving members an app-store presence.',
+        'Used Capacitor to wrap the existing Angular codebase into a mobile app, so we got an app store presence without maintaining a separate native build.',
       context:
-        'Long-running project (2023-2025) involving multiple iterations as PPS expanded which policy types members could manage self-service.',
+        'Part of an exisiting framework of business analysts and project managers, so I had to juggle decisions from the top of the foodchain.',
     },
   },
   {
@@ -94,15 +94,15 @@ export const PROJECTS: Project[] = [
       industry: 'Games',
       role: ['UI/UX Designer', 'Frontend Developer', 'Backend Developer'],
       overview:
-        'A daily emoji-guessing puzzle game, similar in spirit to Wordle, where players decode a string of emojis to guess a word or phrase, with easy and hard difficulty modes.',
+        'A daily emoji puzzle game, a bit like Wordle where you decode a string of emojis into a word or phrase, with easy and hard modes depending on how much of a challenge you want.',
       problem:
-        'Wanted to build a small, self-contained project outside of client work to practice end-to-end ownership — concept, design, and build — without the constraints of an existing codebase or design system.',
+        'I wanted a small side project where I owned everything end to end without an existing codebase or design system telling me what to do.',
       contribution:
-        'Solo-built the entire game: designed the puzzle mechanic and UI from scratch, and implemented it using vanilla HTML, JS, and CSS with no frameworks.',
+        'Built the whole thing solo: came up with the mechanic, designed the UI, and coded it in plain HTML, JS, and CSS.',
       outcome:
-        'A fully playable daily puzzle game, built as a personal project to demonstrate independent design and development outside of client work.',
+        'A fully playable daily puzzle game that exists purely because I wanted to build something on my own terms.',
       decisions:
-        'Deliberately avoided frameworks to keep the project lightweight and to sharpen fundamentals — DOM manipulation, state handling, and animation — without relying on abstractions.',
+        'Skipped frameworks on purpose. Wanted to get back to basics with DOM manipulation, state, and animation without anything abstracting it away.',
     },
   },
 ];

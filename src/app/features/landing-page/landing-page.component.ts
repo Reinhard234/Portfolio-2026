@@ -5,6 +5,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { SkillsComponent } from './components/skills/skills.component';
 import { NavbarComponent } from '../../shared/components/navbar/navbar.component';
 import { SectionObserverService } from '../../shared/services/section-observer.service';
+import { AboutComponent } from './components/about/about.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -14,6 +15,7 @@ import { SectionObserverService } from '../../shared/services/section-observer.s
     ProjectsComponent,
     ExperienceComponent,
     SkillsComponent,
+    AboutComponent,
     NavbarComponent,
   ],
   templateUrl: './landing-page.component.html',
@@ -23,7 +25,13 @@ export class LandingPageComponent implements AfterViewInit, OnDestroy {
   private sections = inject(SectionObserverService);
 
   ngAfterViewInit() {
-    this.sections.observe(['hero', 'projects', 'skills', 'experience']);
+    this.sections.observe([
+      'hero',
+      'projects',
+      'skills',
+      'experience',
+      'about',
+    ]);
   }
 
   ngOnDestroy() {

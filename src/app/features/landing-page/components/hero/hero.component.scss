@@ -20,7 +20,7 @@
     .text-container {
       @include layout-spacing(gap, "4xl");
       @include flex-layout(column);
-      color: $bg-light;
+      color: $text-primary-light;
       z-index: 1;
       text-align: center;
       width: 50%;
@@ -69,6 +69,7 @@
 
       .description {
         @include font-size("3xl");
+        line-height: 1.6;
         transition-delay: 0.25s;
 
         .role {

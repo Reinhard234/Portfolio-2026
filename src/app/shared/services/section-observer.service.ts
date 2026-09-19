@@ -14,6 +14,7 @@ export class SectionObserverService {
     projects: 'visible',
     skills: 'visible',
     experience: 'visible',
+    about: 'visible',
   };
 
   private lightDarkMap: Record<string, Theme> = {
@@ -21,6 +22,7 @@ export class SectionObserverService {
     projects: 'light',
     skills: 'light',
     experience: 'dark',
+    about: 'dark',
   };
 
   private sectionIds: string[] = [];

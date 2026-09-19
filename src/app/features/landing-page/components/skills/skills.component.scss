@@ -7,7 +7,6 @@
   overflow: hidden;
   .skills-container {
     @include flex-layout(column, center, center);
-    @include layout-spacing(padding, "7xl");
     background-color: $bg-light;
 
     .section-header-container {
@@ -15,6 +14,7 @@
       @include layout-spacing(gap, "md");
       @include flex-layout(column);
       color: $text-primary-dark;
+      width: 100%;
 
       .heading {
         @include font-size("5xl");
@@ -29,38 +29,56 @@
       }
     }
 
-    .skill-stack {
+    .skill-stack-container {
       @include flex-layout(row, center, center);
-      @include layout-spacing(gap, "md");
-      width: 30%;
-      padding: 60px 0;
-      flex-wrap: wrap;
+      width: 800px;
+      height: 600px;
 
-      .skill-card {
-        @include flex-layout(row, center, center);
-        @include layout-spacing(width, "6xl");
-        @include layout-spacing(height, "6xl");
-        border-radius: $corner-rounded;
-        background: $bg-light;
-        box-shadow: $skill-card-box-shadow;
-        transform: rotate(calc(var(--i) * 4deg - 12deg)); // fan out tilt
-        transition:
-          transform 0.3s ease,
-          z-index 0s;
-        z-index: var(--i);
+      &:hover {
+        .skill-stack {
+          @include layout-spacing(gap, "md");
 
-        &:hover {
-          transform: rotate(0deg) translateY(-10px) scale(1.1);
-          z-index: 99;
-          border: 2px solid $border-purple-light;
-          background-color: rgba($bg-purple, 0.15);
-          backdrop-filter: blur(10px);
+          .skill-card {
+            transform: rotate(calc(var(--i) * 4deg - 15deg));
+          }
         }
+      }
+      .skill-stack {
+        @include flex-layout(row, center, center);
+        @include layout-spacing(gap, "0");
+        width: 50%;
+        padding: 60px 0;
+        flex-wrap: wrap;
+        transition-duration: 0.3s;
+        transition-timing-function: ease;
 
-        img {
-          @include layout-spacing(width, "5xl");
-          @include layout-spacing(height, "5xl");
-          object-fit: contain;
+        .skill-card {
+          @include flex-layout(row, center, center);
+          @include layout-spacing(width, "6xl");
+          @include layout-spacing(height, "6xl");
+          margin-left: -$number-16;
+          border-radius: $corner-rounded;
+          background: $bg-light;
+          box-shadow: $skill-card-box-shadow;
+          transform: rotate(calc(var(--i) * 4deg - 20deg)); // fan out tilt
+          transition:
+            transform 0.3s ease,
+            z-index 0s;
+          z-index: var(--i);
+
+          &:hover {
+            transform: rotate(0deg) translateY(-10px) scale(1.1);
+            z-index: 99;
+            border: 2px solid $border-purple-light;
+            background-color: rgba($bg-purple, 0.15);
+            backdrop-filter: blur(10px);
+          }
+
+          img {
+            @include layout-spacing(width, "5xl");
+            @include layout-spacing(height, "5xl");
+            object-fit: contain;
+          }
         }
       }
     }
@@ -79,7 +97,7 @@
           @include font-size("sm");
           @include layout-spacing(padding, "xs");
           text-transform: uppercase;
-          letter-spacing: 0.05em;
+          font-weight: 600;
           color: $text-secondary-dark;
           margin-bottom: 8px;
         }

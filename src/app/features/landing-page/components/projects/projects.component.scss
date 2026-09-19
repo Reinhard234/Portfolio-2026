@@ -6,6 +6,7 @@
   background-color: $bg-light;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(15px);
 
   .blob-layer {
     width: 50%;
@@ -24,10 +25,11 @@
       opacity: 0.3;
       position: absolute;
       transform: translateY(var(--scroll-offset, 0px));
+      filter: blur(15px);
       will-change: transform;
       background: linear-gradient(
-        rgba($light-green, 0.2),
-        rgba($bg-purple, 0.2)
+        rgba($light-green, 0.3),
+        rgba($bg-purple, 0.3)
       );
     }
 
@@ -69,39 +71,46 @@
     position: relative;
     z-index: 1;
     text-align: left;
-    width: 100%;
+    width: 80%;
     height: 100%;
     padding: 200px 0px;
     background-color: rgba($bg-light, 0.1);
-    backdrop-filter: blur(15px);
 
-    .projects {
+    .section-header-container {
+      // @include layout-spacing(padding, "3xl");
+      @include layout-spacing(gap, "md");
       @include flex-layout(column);
-      gap: 100px;
-      width: 40%;
-      min-width: 600px;
-      .section-header-container {
-        @include layout-spacing(padding, "3xl");
-        @include layout-spacing(gap, "md");
-        @include flex-layout(column);
-        color: $text-primary-dark;
+      color: $text-primary-dark;
+      width: 100%;
 
-        .heading {
-          @include font-size("5xl");
-          @include layout-spacing(gap, "sm");
-          @include flex-layout(row, null, flex-end);
-          color: $text-secondary-dark;
-          font-weight: 500;
+      .heading {
+        @include font-size("5xl");
+        @include layout-spacing(gap, "sm");
+        @include flex-layout(row, null, flex-end);
+        color: $text-secondary-dark;
+        font-weight: 500;
 
-          .year-range-text {
-            @include font-size("base");
-            color: $text-primary-dark;
-          }
+        .year-range-text {
+          @include font-size("sm");
+          color: $text-muted-light;
         }
+      }
 
-        .title {
-          @include font-size("xl");
-        }
+      .title {
+        @include font-size("xl");
+      }
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      @include layout-spacing(gap, "sm");
+      align-items: start; // important — lets columns move independently without stretching
+
+      &__col {
+        display: flex;
+        flex-direction: column;
+        @include layout-spacing(gap, "sm");
+        will-change: transform;
       }
     }
   }

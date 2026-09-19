@@ -12,4 +12,13 @@ import { ExperienceCardComponent } from './components/experience-card/experience
 })
 export class ExperienceComponent {
   experience = EXPERIENCE;
+  expandedIndex: number | null = null;
+
+  toggleEntry(index: number): void {
+    this.expandedIndex = this.expandedIndex === index ? null : index;
+  }
+
+  isExpanded(index: number): boolean {
+    return this.expandedIndex === index;
+  }
 }

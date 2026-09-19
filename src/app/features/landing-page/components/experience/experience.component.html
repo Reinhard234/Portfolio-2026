@@ -16,19 +16,35 @@
           </div>
 
           <div class="timeline-content">
-            <div class="entry-header">
-              <div class="text-primary role">{{ entry.role }}</div>
-              <div class="entry-period">{{ entry.period }}</div>
+            <div
+              class="entry-header"
+              (click)="toggleEntry(i)"
+              [class.expanded]="isExpanded(i)"
+            >
+              <div class="entry-header-main">
+                <div class="text-primary role">{{ entry.role }}</div>
+                <div class="entry-period">{{ entry.period }}</div>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M6 9l6 6 6-6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
             </div>
             <div class="entry-company">{{ entry.company }}</div>
 
-            <div class="entry-points">
-              @for (point of entry.points; track point; let i = $index) {
-                <app-experience-card
-                  [experience]="point"
-                  [appScrollReveal]="i * 150"
-                />
-              }
+            <div class="entry-points-wrapper" [class.expanded]="isExpanded(i)">
+              <div class="entry-points-inner">
+                <div class="entry-points">
+                  @for (point of entry.points; track point) {
+                    <app-experience-card [experience]="point" />
+                  }
+                </div>
+              </div>
             </div>
           </div>
         </div>

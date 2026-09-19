@@ -2,7 +2,6 @@
 
 .project-info-container {
   @include layout-spacing(gap, "xl");
-  @include layout-spacing(padding, "3xl");
   @include flex-layout(column);
   color: $text-primary-dark;
   box-shadow: unset;
@@ -10,62 +9,16 @@
   border-radius: $corner-rounded;
   transition: 0.3s ease-in-out;
 
-  &:hover {
-    box-shadow: $default-box-shadow;
-  }
-
-  .title-container {
-    @include flex-layout(row, space-between, null);
-
-    .title {
-      @include font-size("4xl");
-      font-weight: 700;
-    }
-    .client-year-container {
-      @include font-size("base");
-      @include layout-spacing(gap, "sm");
-      @include flex-layout(row, space-between, center);
-      color: $text-muted-light;
-
-      .divider {
-        @include layout-spacing(width, "2xs");
-        @include layout-spacing(height, "2xs");
-        border-radius: $corner-fully-rounded;
-        background-color: $bg-dark;
-      }
-    }
-  }
-
-  .skills {
-    @include flex-layout;
-    @include layout-spacing(gap, "sm");
-
-    .skill {
-      @include flex-layout;
-      @include layout-spacing(padding-top, "xs");
-      @include layout-spacing(padding-bottom, "xs");
-      @include layout-spacing(padding-left, "sm");
-      @include layout-spacing(padding-right, "sm");
-      background-color: rgba($bg-purple, 0.2);
-      border-radius: $corner-fully-rounded;
-      color: $text-secondary-dark;
-    }
-  }
-
-  .description {
-    @include font-size("lg");
-  }
-
   .project-image-container {
     @include flex-layout;
     transition-duration: 0.5s;
     cursor: none;
     position: relative;
     overflow: hidden;
-    border-radius: $corner-rounded;
 
     .project-image {
       width: 100%;
+      border-radius: $corner-rounded;
     }
 
     .view-cursor {
@@ -120,15 +73,6 @@
       opacity: 0;
       transition: opacity 0.4s ease;
       z-index: 1;
-    }
-
-    &:hover {
-      &::before {
-        left: 150%;
-      }
-      &::after {
-        opacity: 1;
-      }
     }
   }
 }

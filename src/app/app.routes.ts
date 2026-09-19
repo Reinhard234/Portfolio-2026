@@ -7,7 +7,7 @@ export const routes: Routes = [
       import('./features/landing-page/landing-page.component').then(
         (m) => m.LandingPageComponent,
       ),
-    title: 'Welcome to My App', // Sets the browser tab title automatically
+    title: 'Reinhard Stoop', // Sets the browser tab title automatically
   },
   {
     path: '**', // Catch-all wildcard route for 404 errors

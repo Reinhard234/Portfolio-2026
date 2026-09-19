@@ -3,7 +3,7 @@
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(black, 0.8);
+  background: rgba($bg-dark, 0.8);
   backdrop-filter: blur(6px);
   z-index: 100;
   @include flex-layout(row, center, center);
@@ -14,7 +14,7 @@
     @include flex-layout(column);
     position: relative;
     width: 70%;
-    max-width: 1000px;
+    max-width: 1400px;
     height: 95vh;
     overflow-y: auto;
     background: $bg-dark;
@@ -50,7 +50,7 @@
 
   .content-container {
     @include flex-layout(row);
-    @include layout-spacing(gap, "3xl");
+    @include layout-spacing(gap, "5xl");
     align-items: flex-start;
 
     .modal-sidebar {
@@ -61,13 +61,8 @@
       position: sticky;
       top: 0;
 
-      .project-title {
-        @include font-size("2xl");
-        font-weight: 500;
-      }
-
       .modal-meta {
-        @include font-size("sm");
+        @include font-size("base");
         color: $text-secondary-light;
       }
 
@@ -76,7 +71,7 @@
         @include layout-spacing(gap, "2xs");
 
         .meta-label {
-          @include font-size("xs");
+          @include font-size("sm");
           text-transform: uppercase;
           letter-spacing: 0.05em;
           color: $text-secondary-light;
@@ -93,8 +88,8 @@
         flex-wrap: wrap;
 
         .skill-chip {
-          @include layout-spacing(padding, "2xs");
-          @include font-size("xs");
+          @include layout-spacing(padding, "xs");
+          @include font-size("sm");
           border-radius: $corner-rounded;
           background-color: rgba($bg-purple, 0.15);
           color: $text-secondary-light;
@@ -104,24 +99,38 @@
 
     .modal-narrative {
       @include flex-layout(column);
-      @include layout-spacing(gap, "xl");
+      @include layout-spacing(gap, "4xl");
       width: 70%;
+      .title-container {
+        @include flex-layout(column);
+        @include layout-spacing(gap, "sm");
+        .project-title {
+          @include font-size("3xl");
+          font-weight: 500;
+        }
 
-      .narrative-lede {
-        @include font-size("lg");
-        color: $text-secondary-light;
+        .project-description {
+          @include font-size("base");
+        }
+      }
+
+      .divider {
+        height: 2px;
+        width: 100%;
+        background-color: rgba($bg-light, 0.4);
       }
 
       .narrative-section {
-        @include flex-layout(column);
+        @include flex-layout(row);
         @include layout-spacing(gap, "xs");
 
         h3 {
           @include font-size("sm");
           text-transform: uppercase;
           letter-spacing: 0.05em;
-          color: $text-secondary-light;
+          color: $text-muted-light;
           margin: 0;
+          min-width: 200px;
         }
 
         p {

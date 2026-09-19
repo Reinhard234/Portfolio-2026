@@ -1,0 +1,33 @@
+<div
+  class="section-container"
+  (mousemove)="onMove($event)"
+  (mouseleave)="onLeave()"
+>
+  <div class="about-me-section">
+    <div class="about-me-header text-secondary">A little bit about me</div>
+
+    <div class="about-content">
+      <div class="about-text">
+        <p class="bio">{{ bio }}</p>
+        <p class="tagline">{{ tagline }}</p>
+      </div>
+
+      <div class="stats-grid">
+        @for (stat of stats; track stat.label) {
+          <div class="stat-card">
+            <span class="stat-value">{{ stat.value }}</span>
+            <span class="stat-label">{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <img
+    #face
+    class="cursor-face"
+    src="/assets/images/general/reinhard-colour.JPG"
+    alt=""
+    aria-hidden="true"
+  />
+</div>

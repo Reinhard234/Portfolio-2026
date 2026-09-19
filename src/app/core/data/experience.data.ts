@@ -6,8 +6,8 @@ export const EXPERIENCE: Experience[] = [
     company: 'Gendac Software, Innovations & IoT',
     period: '2023 — Present',
     points: [
-      'End-to-end development from user interviews through full rollout',
-      'Owned UX decisions, ran moderated usability testing and implemented changes',
+      'End-to-end development from <strong>user interviews</strong> through full rollout',
+      'Owned UX decisions, ran <strong>moderated usability testing</strong> and implemented changes',
       'Mentored a group of <strong>4</strong> student workers and <strong>3</strong> junior developers',
     ],
   },

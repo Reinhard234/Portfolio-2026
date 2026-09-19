@@ -73,7 +73,13 @@
           flex: 1;
 
           .entry-header {
+            cursor: pointer;
             @include flex-layout(row, space-between, baseline);
+
+            .entry-header-main {
+              @include flex-layout(row, space-between, center);
+              flex: 1;
+            }
 
             .role {
               @include font-size("xl");
@@ -82,13 +88,59 @@
 
             .entry-period {
               @include font-size("sm");
+              color: rgba($text-primary-light, 0.6);
+            }
+
+            .accordion-icon {
+              width: $icons-size-md;
+              height: $icons-size-md;
+              margin-left: 12px;
+              flex-shrink: 0;
               color: $text-secondary-light;
+              transition: transform 0.25s ease;
+            }
+
+            &.expanded .accordion-icon {
+              transform: rotate(180deg);
+            }
+          }
+
+          .entry-points-wrapper {
+            display: grid;
+            grid-template-rows: 0fr;
+            opacity: 0;
+            visibility: hidden;
+            transition:
+              grid-template-rows 0.35s ease,
+              opacity 0.35s ease,
+              visibility 0s linear 0.35s;
+
+            &.expanded {
+              grid-template-rows: 1fr;
+              opacity: 1;
+              visibility: visible;
+              transition:
+                grid-template-rows 0.35s ease,
+                opacity 0.35s ease,
+                visibility 0s linear 0s;
+            }
+
+            .entry-points-inner {
+              overflow: hidden;
+              min-height: 0;
+            }
+
+            .entry-points {
+              display: flex;
+              flex-direction: column;
+              @include layout-spacing(gap, "md");
+              padding: 8px 4px; // breathing room so shadows, hover lift and reveal offsets aren't clipped
             }
           }
 
           .entry-company {
             @include font-size("base");
-            color: $text-secondary-light;
+            color: rgba($text-primary-light, 0.6);
           }
 
           .entry-points {
