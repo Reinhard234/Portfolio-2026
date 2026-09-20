@@ -1,4 +1,3 @@
-// project-modal.component.ts
 import { Component, inject, HostListener } from '@angular/core';
 import { ModalService } from './modal.service';
 import { ScrollRevealDirective } from '../../../directives/scroll-reveal.directive';

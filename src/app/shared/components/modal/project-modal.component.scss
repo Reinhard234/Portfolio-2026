@@ -17,6 +17,7 @@
     max-width: 1400px;
     height: 95vh;
     overflow-y: auto;
+    overscroll-behavior: contain;
     background: $bg-dark;
     border-radius: $corner-rounded;
     color: $text-primary-light;

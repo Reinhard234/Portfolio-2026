@@ -16,6 +16,8 @@ export class SmoothScrollService implements OnDestroy {
   private lenis?: Lenis;
   private rafId?: number;
 
+  private locks = 0;
+
   init(): void {
     if (!this.isBrowser || this.lenis) return;
 
@@ -45,6 +47,28 @@ export class SmoothScrollService implements OnDestroy {
       const el =
         typeof target === 'string' ? document.querySelector(target) : target;
       el?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  lock(): void {
+    this.locks++;
+    if (this.locks > 1) return;
+
+    if (this.lenis) {
+      this.lenis.stop();
+    } else {
+      document.documentElement.style.overflow = 'hidden';
+    }
+  }
+
+  unlock(): void {
+    this.locks = Math.max(0, this.locks - 1);
+    if (this.locks > 0) return;
+
+    if (this.lenis) {
+      this.lenis.start();
+    } else {
+      document.documentElement.style.overflow = '';
     }
   }
 

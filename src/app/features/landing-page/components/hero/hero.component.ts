@@ -7,22 +7,21 @@ import {
   NgZone,
   ViewChild,
 } from '@angular/core';
-import { ScrollRevealDirective } from '../../../../directives/scroll-reveal.directive';
 import { ParallaxDirective } from '../../../../directives/parallax.directive';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, ScrollRevealDirective, ParallaxDirective],
+  imports: [CommonModule, ParallaxDirective],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
 })
 export class HeroComponent {
-  @ViewChild('iconLayer') iconLayer!: ElementRef<HTMLElement>;
-  private ticking = false;
+  @ViewChild('cursor', { static: true }) cursor!: ElementRef<HTMLImageElement>;
+  @ViewChild('content', { static: true })
+  content!: ElementRef<HTMLElement>;
   hoverCaption: string = '';
   hoverCaptionChars: string[] = [];
-  @ViewChild('face', { static: true }) face!: ElementRef<HTMLImageElement>;
 
   private readonly cycleMs = 3000;
   private cycleTimer?: ReturnType<typeof setInterval>;
@@ -36,11 +35,18 @@ export class HeroComponent {
   private snapNextMove = true;
   private activeIndex = 0;
   public flyingOut = false;
+  private ticking = false;
 
   readonly photos = [
-    '/assets/images/general/reinhard-2.jpg',
-    '/assets/images/general/reinhard-3.jpg',
-    '/assets/images/general/reinhard-4.jpg',
+    { img: '/assets/images/general/reinhard-2.jpg', caption: 'Bolzano, Italy' },
+    {
+      img: '/assets/images/general/reinhard-3.jpg',
+      caption: 'Constantia, Cape Town',
+    },
+    {
+      img: '/assets/images/general/reinhard-4.jpg',
+      caption: 'Riva Del Garda, Italy',
+    },
   ];
 
   readonly tilts = [-4, 3, -8];
@@ -86,7 +92,7 @@ export class HeroComponent {
     this.currentX += dx * this.ease;
     this.currentY += dy * this.ease;
 
-    this.face.nativeElement.style.transform = `translate(${this.currentX}px, ${this.currentY}px) translate(-50%, -50%)`;
+    this.cursor.nativeElement.style.transform = `translate(${this.currentX}px, ${this.currentY}px) translate(-50%, -50%)`;
 
     // once it has caught up, stop looping until the mouse moves again
     if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1) {
@@ -122,20 +128,21 @@ export class HeroComponent {
   }
 
   @HostListener('window:scroll') onScroll() {
-    if (this.ticking) return;
-    this.ticking = true;
-
     requestAnimationFrame(() => {
+      const widthChangeSpeed = 0.4;
       const scrollY = window.scrollY;
-      const icons =
-        this.iconLayer.nativeElement.querySelectorAll<HTMLElement>('.icon');
-
-      icons.forEach((icon) => {
-        const speed = parseFloat(icon.dataset['speed'] ?? '0.2');
-        icon.style.setProperty('--scroll-offset', `${scrollY * speed}px`);
-      });
-
-      this.ticking = false;
+      this.content.nativeElement.style.setProperty(
+        'width',
+        `calc(100% - ${scrollY * widthChangeSpeed}px)`,
+      );
+      if (scrollY > 0) {
+        this.content.nativeElement.style.setProperty(
+          'border-radius',
+          `${scrollY * 0.1}px`,
+        );
+      } else {
+        this.content.nativeElement.style.setProperty('border-radius', `0px`);
+      }
     });
   }
 
