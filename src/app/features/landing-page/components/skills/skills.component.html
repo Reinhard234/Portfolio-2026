@@ -16,6 +16,7 @@
                 class="skill-card"
                 [style.--i]="i"
                 (mouseenter)="setActiveCategory(skill.name)"
+                (mouseleave)="setActiveCategory('')"
               >
                 <img
                   [src]="'/assets/images/skills/' + skill.icon + '.png'"

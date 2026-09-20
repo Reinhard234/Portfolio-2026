@@ -6,9 +6,9 @@ export const EXPERIENCE: Experience[] = [
     company: 'Gendac Software, Innovations & IoT',
     period: '2023 — Present',
     points: [
-      'End-to-end development from <strong>user interviews</strong> through full rollout',
-      'Owned UX decisions, ran <strong>moderated usability testing</strong> and implemented changes',
-      'Mentored a group of <strong>4</strong> student workers and <strong>3</strong> junior developers',
+      'End-to-end development of systems with <strong>10 000+</strong> users from user interviews through full rollout.',
+      'Owned UX decisions, reviewed frontend <strong>pull requests</strong> and helped with production releases.',
+      'Mentored a group of <strong>7</strong> student workers and <strong>3</strong> junior developers.',
     ],
   },
   {
@@ -16,9 +16,9 @@ export const EXPERIENCE: Experience[] = [
     company: 'University of Pretoria',
     period: '2022',
     points: [
-      'Taught a Human-Computer Interaction module',
-      'Managed student UI/UX and frontend development projects',
-      'Developed lesson plans and curriculum aligned with academic objectives',
+      'Taught a Human-Computer Interaction module for a class of <strong>100+</strong> students.',
+      'Managed student UI/UX and frontend development projects.',
+      'Developed lesson plans and curriculum that aligned with academic objectives.',
     ],
   },
   {
@@ -26,9 +26,9 @@ export const EXPERIENCE: Experience[] = [
     company: 'Smarten Renovate',
     period: '2020 — 2021',
     points: [
-      'Created brand identity and visual style',
-      'Aligned brand for use across all company communications',
-      'Created ads for use on Instagram and Facebook',
+      'Created brand identity and visual style.',
+      'Aligned brand for use across all company communications.',
+      'Created ads for use on Instagram and Facebook.',
     ],
   },
 ];

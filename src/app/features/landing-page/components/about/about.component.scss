@@ -147,18 +147,23 @@
       @include font-size("4xl");
       font-weight: 500;
     }
-    .bio {
-      @include font-size("lg");
-      line-height: 1.7;
-      color: rgba($text-primary-light, 0.85);
-      margin: 0;
-    }
-    .tagline {
-      @include font-size("xl");
-      font-weight: 500;
-      line-height: 1.7;
-      color: $text-primary-light;
-      margin: 0;
+
+    .more-info {
+      @include flex-layout(column);
+      @include layout-spacing(gap, "sm");
+      .bio {
+        @include font-size("lg");
+        line-height: 1.7;
+        color: rgba($text-primary-light, 0.85);
+        margin: 0;
+      }
+      .tagline {
+        @include font-size("xl");
+        font-weight: 500;
+        line-height: 1.7;
+        color: $text-primary-light;
+        margin: 0;
+      }
     }
   }
 

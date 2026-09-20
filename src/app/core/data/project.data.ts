@@ -16,17 +16,17 @@ export const PROJECTS: Project[] = [
       overview:
         'A cross-platform app that lets Western Cape residents report road defects like potholes and damaged guardrails straight to the road infrastructure department, complete with photos and status tracking.',
       contribution:
-        'I handled the design and frontend on both sides of the spectrum. The citizen-facing app and the internal tool that foremen and supervisors use to action reports. I also jumped into the backend APIs when needed.',
+        'I handled the frontend for the citizen-facing app and designed the internal tool that foremen and supervisors use to action logged reports. I also review frontend pull requests and handle releases.',
       problem:
         "Before this, residents didn't really have a proper way to report road issues. Everything went through scattered channels and nobody could tell if a reported defect actually led to anything.",
       outcome:
-        "It's live on Android and iOS now, with 12,134 residents using it as of March 2026. The admin side also means internal staff can actually be held accountable for acting on what gets logged.",
+        "It's live on Android and iOS, with 12,134 residents using it as of March 2026. The admin side also means internal staff can actually be held accountable for acting on what gets logged.",
       decisions:
         'Went with a MAUI Blazor hybrid app so it could share code with our existing Blazor web portal instead of building everything twice.',
       quality:
-        'Every production release goes through regression testing first, and the backend is covered by xUnit tests.',
+        'Every production release goes through regression testing first, and the backend is tested with xUnit (100% code coverage).',
       context:
-        'Small team, 3-5 devs, shipping to production at least once a month.',
+        'Working directly with the road infrastructure branch of the Western Cape Government, we are a small team of about 3-5 devs and we ship to production at least once a month.',
     },
   },
   {
@@ -44,15 +44,15 @@ export const PROJECTS: Project[] = [
       overview:
         'A mobile-first platform where PPS members can insure everyday items (i.e., phones, laptops etc) right from the portal, skipping the usual broker process.',
       problem:
-        "There wasn't a self-service option for members who just wanted a quick way to cover their items. It all had to go through brokers, which was slow and honestly overkill for something like insuring a laptop.",
+        "There wasn't a self-service option for members who just wanted a quick way to cover their items. It all had to go through brokers, which was inefficient for something like insuring a laptop.",
       contribution:
-        "I designed the entire end to end quoting flow with mobile in mind first, since that's how most members were actually using the portal, then built it out in Angular and helped with the backend quoting services.",
+        "I designed the entire end-to-end quoting flow with mobile in mind first, since that's how most members were using the portal, then built it out in Angular and helped with integrating the backend quoting services.",
       outcome:
-        'What used to take days through a broker now takes minutes, entirely self-service.',
+        'What used to take days through a broker now takes minutes and you can do it entirely on your own.',
       decisions:
-        'Went mobile-first from day one to provide a quick and easy way to get cover.',
+        'Went mobile-first from day one to provide a quick and easy way to get cover. We went with Angular so that it slots in nicely with the rest of the ecosystem.',
       context:
-        'This formed part of an existing ecosystem, so I had to work within their established patterns while still making this particular flow feel quicker and simpler than the rest.',
+        'Working directly in the existing PPS ecosystem, we were a team of 2-3 devs and worked directly with a business analyst and the head of short term insurance.',
     },
   },
   {
@@ -78,7 +78,7 @@ export const PROJECTS: Project[] = [
       decisions:
         'Used Capacitor to wrap the existing Angular codebase into a mobile app, so we got an app store presence without maintaining a separate native build.',
       context:
-        'Part of an exisiting framework of business analysts and project managers, so I had to juggle decisions from the top of the foodchain.',
+        'Part of the larger PPS ecosystem, we were a team of about 10 members, ranging from devs to QA testers.',
     },
   },
   {

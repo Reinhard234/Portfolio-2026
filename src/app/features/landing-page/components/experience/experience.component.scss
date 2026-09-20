@@ -68,13 +68,13 @@
 
         .timeline-content {
           @include flex-layout(column);
-          @include layout-spacing(gap, "sm");
+          @include layout-spacing(gap, "xs");
           @include layout-spacing(padding-bottom, "5xl");
           flex: 1;
 
           .entry-header {
+            @include flex-layout(row, space-between, center);
             cursor: pointer;
-            @include flex-layout(row, space-between, baseline);
 
             .entry-header-main {
               @include flex-layout(row, space-between, center);
@@ -100,8 +100,31 @@
               transition: transform 0.25s ease;
             }
 
-            &.expanded .accordion-icon {
-              transform: rotate(180deg);
+            &.expanded {
+              .accordion-icon {
+                transform: rotate(180deg);
+              }
+
+              .entry-header-main {
+                .role {
+                  color: $text-secondary-light;
+                }
+
+                .entry-period {
+                  color: rgba($text-secondary-light, 0.6);
+                }
+              }
+            }
+            &:hover {
+              .entry-header-main {
+                .role {
+                  color: $text-secondary-light;
+                }
+
+                .entry-period {
+                  color: rgba($text-secondary-light, 0.6);
+                }
+              }
             }
           }
 
@@ -133,7 +156,7 @@
             .entry-points {
               display: flex;
               flex-direction: column;
-              @include layout-spacing(gap, "md");
+              @include layout-spacing(gap, "lg");
               padding: 8px 4px; // breathing room so shadows, hover lift and reveal offsets aren't clipped
             }
           }
