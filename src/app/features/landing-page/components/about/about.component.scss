@@ -11,121 +11,58 @@
   box-sizing: border-box;
 }
 
-.icon-layer {
-  @include flex-layout(column, center, center);
-  width: 60%;
-  height: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-
-  .icon {
-    position: absolute;
-    transform: translateY(var(--scroll-offset, 0px));
-    will-change: transform;
-    transition:
-      opacity 0.5s ease,
-      filter 0.5s ease;
-
-    img {
-      display: block;
-      height: $hero-icon-size;
-      width: fit-content;
-      filter: blur(1px) brightness(0.6);
-      animation-fill-mode: backwards;
-
-      transition:
-        opacity 0.5s ease,
-        filter 0.5s ease;
-    }
-  }
-
-  &:has(.icon:hover) {
-    .icon {
-      transition: filter 0.5s ease;
-      img {
-        filter: blur(10px) brightness(0.5);
-        transform: translateY(0);
-      }
-    }
-
-    .icon:hover {
-      transition: filter 0.5s ease;
-      img {
-        opacity: 1;
-        animation: RotateLeftRight 1.5s steps(1) infinite;
-        filter: blur(0px);
-      }
-    }
-  }
-
-  .icon-gaming {
-    top: 18%;
-    left: 25%;
-    z-index: 2;
-    transition-delay: 0.05s;
-
-    img {
-      animation-delay: 0s;
-    }
-  }
-
-  .icon-sushi {
-    top: 18%;
-    right: 25%;
-    transition-delay: 0.15s;
-
-    img {
-      animation-delay: 1s;
-    }
-  }
-
-  .icon-pom {
-    bottom: 15%;
-    left: 25%;
-    transition-delay: 0.2s;
-
-    img {
-      animation-delay: 2s;
-    }
-  }
-
-  .icon-popcorn {
-    bottom: 15%;
-    right: 25%;
-    transition-delay: 0.3s;
-
-    img {
-      animation-delay: 3s;
-    }
-  }
-
-  .icon-music {
-    top: 45%;
-    left: 5%;
-    transition-delay: 0.35s;
-
-    img {
-      animation-delay: 4s;
-    }
-  }
-
-  .icon-jogging {
-    top: 45%;
-    right: 5%;
-    transition-delay: 0.4s;
-
-    img {
-      animation-delay: 5s;
-    }
-  }
-}
-
 .about-me-section {
   max-width: 700px;
   z-index: 20;
+  @include flex-layout(column);
+  @include layout-spacing(gap, "6xl");
+
+  .icon-layer {
+    @include grid-layout(repeat(3, 1fr), null, null, center, null);
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+
+    .icon {
+      position: relative;
+      transform: translateY(var(--scroll-offset, 0px));
+      will-change: transform;
+      transition:
+        opacity 0.5s ease,
+        filter 0.5s ease;
+
+      img {
+        display: block;
+        height: $hero-icon-size;
+        width: fit-content;
+        filter: blur(1px) brightness(0.6);
+        animation-fill-mode: backwards;
+
+        transition:
+          opacity 0.5s ease,
+          filter 0.5s ease;
+      }
+    }
+
+    &:has(.icon:hover) {
+      .icon {
+        transition: filter 0.5s ease;
+        img {
+          filter: blur(10px) brightness(0.5);
+          transform: translateY(0);
+        }
+      }
+
+      .icon:hover {
+        transition: filter 0.5s ease;
+        img {
+          opacity: 1;
+          animation: RotateLeftRight 1.5s steps(1) infinite;
+          filter: blur(0px);
+        }
+      }
+    }
+  }
 
   .about-content {
     display: grid;
@@ -140,6 +77,7 @@
       text-align: center;
     }
   }
+
   .about-text {
     @include flex-layout(column);
     @include layout-spacing(gap, "sm");
@@ -163,6 +101,17 @@
         line-height: 1.7;
         color: $text-primary-light;
         margin: 0;
+      }
+    }
+
+    .contact-links {
+      @include flex-layout(row);
+      @include layout-spacing(gap, "xs");
+      .link {
+        img {
+          width: 45px;
+          width: 45px;
+        }
       }
     }
   }

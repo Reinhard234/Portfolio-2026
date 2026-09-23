@@ -2,6 +2,7 @@
 
 .section-container {
   @include flex-layout(column, center, center);
+  @include layout-spacing(padding, "7xl");
   min-height: 100vh;
   background-color: $bg-dark;
   position: relative;
@@ -9,8 +10,6 @@
   .experience-container {
     @include flex-layout(column);
     @include layout-spacing(gap, "4xl");
-    @include layout-spacing(padding, "7xl");
-    width: 50%;
     color: $text-primary-light;
 
     .section-header-container {
@@ -34,7 +33,6 @@
 
     .timeline {
       @include flex-layout(column);
-      min-width: 600px;
       position: relative;
 
       .timeline-entry {

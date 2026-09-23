@@ -1,4 +1,5 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
+import { SmoothScrollService } from './smooth-scroll.service';
 
 type Visibility = 'hidden' | 'visible';
 type Theme = 'light' | 'dark';
@@ -8,6 +9,7 @@ export class SectionObserverService {
   activeSection = signal<string>('hero');
   isHidden = signal<boolean>(true);
   isDarkMode = signal<boolean>(true);
+  private smoothScroll = inject(SmoothScrollService);
 
   private hideShowMap: Record<string, Visibility> = {
     hero: 'hidden',
@@ -69,9 +71,8 @@ export class SectionObserverService {
   }
 
   scrollTo(id: string) {
-    document
-      .getElementById(id)
-      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const el = document.getElementById(id);
+    if (el) this.smoothScroll.scrollTo(el);
   }
 
   disconnect() {

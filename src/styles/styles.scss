@@ -24,17 +24,15 @@ dd {
   margin: 0;
 }
 
+body {
+  font-size: 1rem; // Evaluates to 16px
+}
+
 /* Prevent viewport zooming anomalies on mobile orientation changes */
 html {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   scroll-behavior: smooth;
-}
-
-/* Ensure full height and smooth scrolling behaviors */
-html,
-body {
-  height: 100%;
 }
 
 .reveal {

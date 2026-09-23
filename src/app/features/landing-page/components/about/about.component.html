@@ -1,42 +1,59 @@
 <div class="section-container">
-  <div class="icon-layer">
-    <div class="icon icon-gaming" [appScrollReveal]="400">
-      <img src="/assets/images/icons/gaming.png" alt="gaming" />
-    </div>
-    <div class="icon icon-sushi" [appScrollReveal]="400">
-      <img src="/assets/images/icons/sushi.png" alt="sushi" />
-    </div>
-    <div class="icon icon-pom" [appScrollReveal]="400">
-      <img src="/assets/images/icons/pom.png" alt="pomeranian" />
-    </div>
-    <div class="icon icon-popcorn" [appScrollReveal]="400">
-      <img src="/assets/images/icons/popcorn.png" alt="popcorn" />
-    </div>
-    <div class="icon icon-music" [appScrollReveal]="400">
-      <img src="/assets/images/icons/music.png" alt="music" />
-    </div>
-    <div class="icon icon-jogging" [appScrollReveal]="400">
-      <img src="/assets/images/icons/jogging.png" alt="jogging" />
-    </div>
-  </div>
-
   <div class="about-me-section" appParallax="up">
+    <div class="icon-layer">
+      <div class="icon icon-gaming" [appScrollReveal]="200">
+        <img src="/assets/images/icons/gaming.png" alt="gaming" />
+      </div>
+      <div class="icon icon-sushi" [appScrollReveal]="300">
+        <img src="/assets/images/icons/sushi.png" alt="sushi" />
+      </div>
+      <div class="icon icon-pom" [appScrollReveal]="400">
+        <img src="/assets/images/icons/pom.png" alt="pomeranian" />
+      </div>
+    </div>
     <div class="about-content">
       <div class="about-text">
-        <div class="about-me-header text-secondary">A little bit about me</div>
-        <div class="more-info">
+        <div class="about-me-header text-secondary" [appScrollReveal]="200">
+          A little bit about me
+        </div>
+        <div class="more-info" [appScrollReveal]="400">
           <p class="bio">{{ bio }}</p>
           <p class="tagline">{{ tagline }}</p>
         </div>
+        <div class="contact-links" [appScrollReveal]="600">
+          <a
+            href="https://www.linkedin.com/in/reinhard-stoop/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+            class="link"
+          >
+            <img src="/assets/images/icons/linkedin.png" alt="" />
+          </a>
+          <a href="mailto:you@stopie414@gmail.com" class="link">
+            <img src="/assets/images/icons/email.png" alt="" />
+          </a>
+        </div>
       </div>
 
-      <div class="stats-grid">
+      <div class="stats-grid" [appScrollReveal]="400">
         @for (stat of stats; track stat.label) {
           <div class="stat-card">
             <span class="stat-value">{{ stat.value }}</span>
             <span class="stat-label">{{ stat.label }}</span>
           </div>
         }
+      </div>
+    </div>
+    <div class="icon-layer">
+      <div class="icon icon-popcorn" [appScrollReveal]="400">
+        <img src="/assets/images/icons/popcorn.png" alt="popcorn" />
+      </div>
+      <div class="icon icon-music" [appScrollReveal]="300">
+        <img src="/assets/images/icons/music.png" alt="music" />
+      </div>
+      <div class="icon icon-jogging" [appScrollReveal]="200">
+        <img src="/assets/images/icons/jogging.png" alt="jogging" />
       </div>
     </div>
   </div>

@@ -5,6 +5,8 @@
   background-color: $bg-light;
   position: relative;
   overflow: hidden;
+  padding: 200px 0px;
+
   .skills-container {
     @include flex-layout(column, center, center);
     background-color: $bg-light;
